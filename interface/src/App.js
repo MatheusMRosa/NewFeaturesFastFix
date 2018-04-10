@@ -3,7 +3,6 @@ import './App.css';
 import RegisterEmployee from './employee/RegisterEmployee';
 import ListEmployee from './employee/ListEmployee';
 import {addEmployee, featchEmployee} from './employee/actionsEmployee';
-import RegisterService from './employee/RegisterService';
 //import {featchUser} from './user/login';
 //<RegisterService onSavePressed={this.addEmployee} employees={this.state.employees}/>
 class App extends Component {
@@ -45,6 +44,7 @@ class App extends Component {
             <div className="App">
                 <RegisterEmployee onSavePressed={this.addEmployee}/>
                 <ListEmployee employees={this.state.employees}/>
+
             </div>
         );
     }

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import {RegisterList} from './RegisterService';
+
 const Registered = ({name}) => <div>{name}</div>;
 
 class ListEmployee extends Component {
@@ -7,7 +9,17 @@ class ListEmployee extends Component {
         return (
             <div>{
                 this.props.employees.map(
-                    (employee) => <Registered {...employee} key={employee._id}/>)
+                    (employee) => {
+
+                        if(!employee.services)
+                            employee.services = [];
+                        return (
+                        <div  key={employee._id}>
+                        <Registered {...employee}/>
+                            <RegisterList onAddNewService={()=>{console.log('aaaa');employee.services.push({})}} onSavePressed={this.addEmployee} {...employee}/>
+                        </div>
+                    )})
+
             }
             </div>
         )
