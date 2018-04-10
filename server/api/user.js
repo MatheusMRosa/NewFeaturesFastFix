@@ -4,7 +4,7 @@ const user = require('../entities/user');
 const app = express();
 
 app.get("", (req, res) => {
-    user.find({}, { __v: false, pass: false }, (err, data) => {
+    user.find({}, {__v: false, pass: false}, (err, data) => {
         if (err) {
             return res.sendStatus(500)
         }

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {RegisterList} from './RegisterService';
 
-const Registered = ({name}) => <div>{name}</div>;
+const Registered = ({name}) => <div align="left">{name}</div>;
 
 class ListEmployee extends Component {
     render() {
@@ -10,16 +10,17 @@ class ListEmployee extends Component {
             <div>{
                 this.props.employees.map(
                     (employee) => {
-
-                        if(!employee.services)
+                        if (!employee.services)
                             employee.services = [];
                         return (
-                        <div  key={employee._id}>
-                        <Registered {...employee}/>
-                            <RegisterList onAddNewService={()=>{console.log('aaaa');employee.services.push({})}} onSavePressed={this.addEmployee} {...employee}/>
-                        </div>
-                    )})
-
+                            <div key={employee._id}>
+                                <Registered {...employee}/>
+                                <RegisterList onAddNewService={() => {
+                                    employee.services.push({})
+                                }} onSavePressed={this.addEmployee} {...employee}/>
+                            </div>
+                        )
+                    })
             }
             </div>
         )

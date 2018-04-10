@@ -3,38 +3,40 @@ import './App.css';
 import RegisterEmployee from './employee/RegisterEmployee';
 import ListEmployee from './employee/ListEmployee';
 import {addEmployee, featchEmployee} from './employee/actionsEmployee';
-//import {featchUser} from './user/login';
-//<RegisterService onSavePressed={this.addEmployee} employees={this.state.employees}/>
+
+//import {featchUser} from './user/login
+
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.list = undefined;
-        this.state={
-            employees:[]
+        this.state = {
+            employees: []
         };
         this.updateList = this.updateList.bind(this);
         this.addEmployee = this.addEmployee.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.updateList();
     }
 
-    addEmployee(values){
+    addEmployee(values) {
         addEmployee(values).then((res, err) => {
             if (err) {
                 console.log("Error: ", err)
-            }else {
+            } else {
                 this.updateList();
             }
         });
     }
-    updateList(){
+
+    updateList() {
         featchEmployee().then((data) => {
             this.setState({
                 employees: data
             });
-        }).catch(err=>{
+        }).catch(err => {
             console.log("Error: ", err)
         });
     }

@@ -10,7 +10,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // const auth = (req, res, next) => {
@@ -36,8 +36,8 @@ app.use('/api/employee', employee);
 
 app.listen(3030, '0.0.0.0', () => {
 
-        console.log('He is alive');
-        mongoose.connect('mongodb://fastfix:fastfix@ds036967.mlab.com:36967/fastfix');
+    console.log('He is alive');
+    mongoose.connect('mongodb://fastfix:fastfix@ds036967.mlab.com:36967/fastfix');
 
 
 });

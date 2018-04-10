@@ -4,7 +4,7 @@ const employee = require('../entities/employee');
 const app = express();
 
 app.get("", (req, res) => {
-    employee.find({},{_id:true, name:true}, (err, data) => {
+    employee.find({}, {_id: true, name: true}, (err, data) => {
         if (err) {
             return res.sendStatus(500)
         }

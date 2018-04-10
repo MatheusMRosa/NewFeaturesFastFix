@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 
-const RegisterForm = (props)=>{
+const RegisterForm = (props) => {
     const {service} = props;
-    return  <tr>
-        <td>Descrição do Serviço</td>
-        <td><input value={service.descService} name="descService" onChange={(e)=>{service.descService = e.target.value}}/></td>
-    </tr>;
-}
+    return (
+        <tr>
+            <td>Descrição do Serviço</td>
+            <td><input value={service.descService} name="descService" onChange={(e) => {
+                service.descService = e.target.value
+            }}/></td>
+        </tr>
+    )
+};
 
 export class RegisterList extends Component {
     constructor(props) {
@@ -17,8 +21,7 @@ export class RegisterList extends Component {
     }
 
 
-
-    onAddNewService(){
+    onAddNewService() {
 
         this.props.services.push({
             descService: '',
@@ -26,7 +29,6 @@ export class RegisterList extends Component {
             estimate: '',
             done: false
         });
-        console.log(this.props);
         this.forceUpdate()
     }
 
@@ -34,7 +36,7 @@ export class RegisterList extends Component {
 
     }
 
-    save(){
+    save() {
         this.props.onSavePressed({...this.state.form});
     }
 
@@ -44,10 +46,12 @@ export class RegisterList extends Component {
                 <tbody>
                 <tr>
                     <td>Serviço</td>
-                    <td><button onClick={this.onAddNewService}>Novo Serviço</button></td>
+                    <td>
+                        <button onClick={this.onAddNewService}>Novo Serviço</button>
+                    </td>
                 </tr>
-                {this.props.services.map((service, index)=>(
-                   <RegisterForm key={index} service={service}/>
+                {this.props.services.map((service, index) => (
+                    <RegisterForm key={index} service={service}/>
                 ))}
                 </tbody>
             </table>
