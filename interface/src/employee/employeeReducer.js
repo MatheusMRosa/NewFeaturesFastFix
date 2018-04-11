@@ -17,6 +17,9 @@ export default (state = DEFAULT_STATE, action) => {
             let _new = action.payload.data;
             _new.services = _new.services || [];
             return [...state, _new];
+        case "ADD_EMPLOYEE_REJECT":
+            console.log("ERROu")
+            return "";
         default:
             return state;
     }

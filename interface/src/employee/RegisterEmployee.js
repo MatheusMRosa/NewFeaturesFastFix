@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import { Field, reduxForm } from 'redux-form'
+import {Field, reduxForm} from 'redux-form';
 
-import {addEmployee} from "./actionsEmployee";
 class RegisterEmployee extends Component {
     render() {
         const {handleSubmit} = this.props;
@@ -11,10 +9,10 @@ class RegisterEmployee extends Component {
                 <thead>
                 <tr>
                     <td>Funcionário</td>
-                    <td>         <Field component="input"
-                                        placeholder="Name"
-                                        type="text"
-                                        name="name"/></td>
+                    <td><Field component="input"
+                               placeholder="Nome do Funcionário"
+                               type="text"
+                               name="name"/></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,4 +27,5 @@ class RegisterEmployee extends Component {
     }
 
 }
-export default reduxForm({form:'employeeForm'})(RegisterEmployee);
+
+export default reduxForm({form: 'employeeForm'})(RegisterEmployee);

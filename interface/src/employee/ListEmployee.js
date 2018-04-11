@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {RegisterList} from './RegisterService';
+// import {RegisterList} from './RegisterService';
 
-const Registered = ({name}) => <div align="left">{name}</div>;
+const Registered = ({name}) => <div align="left">Nome: {name}</div>;
 
 class ListEmployee extends Component {
     render() {
@@ -16,7 +16,7 @@ class ListEmployee extends Component {
                         return (
                             <div key={index}>
                                 <Registered {...employee}/>
-                                <RegisterList  onSavePressed={this.addEmployee} services = {employee.services}/>
+                                {/*<RegisterList  onSavePressed={this.addEmployee} services = {employee.services}/>*/}
                             </div>
                         )
                     })
@@ -24,9 +24,10 @@ class ListEmployee extends Component {
             </div>
         )
     }
-
 }
+
 const mapStoreToProps=(store)=>({
   employees: store.employees
 });
+
 export default connect(mapStoreToProps)(ListEmployee);

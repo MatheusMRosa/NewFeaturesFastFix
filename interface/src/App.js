@@ -28,7 +28,6 @@ class App extends Component {
             <div className="App">
                 <RegisterEmployee onSubmit={this.props.addEmployee}/>
                 <ListEmployee/>
-
             </div>
         );
     }
