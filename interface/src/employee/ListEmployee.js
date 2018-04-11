@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 // import {RegisterList} from './RegisterService';
 
-const Registered = ({name}) => <div align="left">Nome: {name}</div>;
+const Registered = ({name}) => <div>Nome: {name}</div>;
 
 class ListEmployee extends Component {
     render() {
@@ -16,6 +16,8 @@ class ListEmployee extends Component {
                         return (
                             <div key={index}>
                                 <Registered {...employee}/>
+                                <br/>
+                                <button>Adicionar novo Serviço</button>
                                 {/*<RegisterList  onSavePressed={this.addEmployee} services = {employee.services}/>*/}
                             </div>
                         )
@@ -26,8 +28,8 @@ class ListEmployee extends Component {
     }
 }
 
-const mapStoreToProps=(store)=>({
-  employees: store.employees
+const mapStoreToProps = (store) => ({
+    employees: store.employees
 });
 
 export default connect(mapStoreToProps)(ListEmployee);

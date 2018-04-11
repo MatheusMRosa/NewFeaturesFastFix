@@ -25,7 +25,6 @@ class RegisterEmployee extends Component {
             </table>
         )
     }
-
 }
 
 export default reduxForm({form: 'employeeForm'})(RegisterEmployee);

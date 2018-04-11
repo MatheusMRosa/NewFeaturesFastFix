@@ -5,6 +5,7 @@ import ListEmployee from './employee/ListEmployee';
 import {newEmployee, fetchEmployee} from './employee/actionsEmployee';
 
 import {connect} from 'react-redux';
+// import {RegisterList} from "./employee/RegisterService";
 
 //import {featchUser} from './user/login
 
@@ -17,7 +18,6 @@ class App extends Component {
     componentDidMount() {
         this.updateList();
     }
-
 
     updateList() {
         this.props.fetchEmployee();

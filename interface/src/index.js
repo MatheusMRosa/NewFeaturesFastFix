@@ -12,7 +12,7 @@ import employeeReducer from './employee/employeeReducer';
 let store = applyMiddleware(promiseMiddleware())(createStore)(
     combineReducers({
         employees: employeeReducer,
-        form: formReducer
+        form: formReducer,
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
