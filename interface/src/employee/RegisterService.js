@@ -1,16 +1,20 @@
 import React, {Component} from 'react';
 
 const RegisterForm = (props) => {
-    const {service} = props;
+    var {service, onChange} = props;
+    console.log(service.descService);
     return (
         <tr>
             <td>Descrição do Serviço</td>
             <td><input value={service.descService} name="descService" onChange={(e) => {
-                service.descService = e.target.value
+                service.descService = e.target.value;
+                onChange(service)
+
             }}/></td>
         </tr>
     )
 };
+
 
 export class RegisterList extends Component {
     constructor(props) {
@@ -23,13 +27,13 @@ export class RegisterList extends Component {
 
     onAddNewService() {
 
-        this.props.services.push({
-            descService: '',
-            time: '',
-            estimate: '',
+        this.props.services = [...this.props.services, {
+            descService: "asdf",
+            time: "",
+            estimate: "",
             done: false
-        });
-        this.forceUpdate()
+        }];
+        // this.forceUpdate()
     }
 
     componentDidMount() {
@@ -51,7 +55,7 @@ export class RegisterList extends Component {
                     </td>
                 </tr>
                 {this.props.services.map((service, index) => (
-                    <RegisterForm key={index} service={service}/>
+                    <RegisterForm key={index} service={service} onChange={(_new)=>{this.props.services[index] = _new}}/>
                 ))}
                 </tbody>
             </table>

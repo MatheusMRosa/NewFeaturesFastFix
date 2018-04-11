@@ -1,45 +1,26 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import { Field, reduxForm } from 'redux-form'
 
+import {addEmployee} from "./actionsEmployee";
 class RegisterEmployee extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            form: {
-                name: ''
-            }
-        };
-        this.onChanged = this.onChanged.bind(this);
-        this.save = this.save.bind(this);
-    }
-
-    onChanged(event) {
-        let form = this.state.form;
-        form[event.target.getAttribute('name')] = event.target.value;
-        this.setState({
-            form: form
-        });
-    }
-
-    componentDidMount() {
-    }
-
-    save() {
-        this.props.onSavePressed({...this.state.form});
-    }
-
     render() {
+        const {handleSubmit} = this.props;
         return (
             <table>
                 <thead>
                 <tr>
                     <td>Funcionário</td>
-                    <td><input value={this.state.form.name} name="name" onChange={this.onChanged}/></td>
+                    <td>         <Field component="input"
+                                        placeholder="Name"
+                                        type="text"
+                                        name="name"/></td>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
-                        <button onClick={this.save}>Salvar</button>
+                        <button onClick={handleSubmit}>Salvar</button>
                     </td>
                 </tr>
                 </tbody>
@@ -48,5 +29,4 @@ class RegisterEmployee extends Component {
     }
 
 }
-
-export default RegisterEmployee;
+export default reduxForm({form:'employeeForm'})(RegisterEmployee);
