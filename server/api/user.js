@@ -32,7 +32,6 @@ app.put("", (req, res) => {
 });
 
 app.delete("/:id", (req, res) => {
-    //TODO fazer modificação para ativo e inativo
     user.findByIdAndRemove(req.params.id, (err, data) => {
         if (err) {
             return res.sendStatus(500)

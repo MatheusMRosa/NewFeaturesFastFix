@@ -1,9 +1,9 @@
 const DEFAULT_STATE = [
     {
-        name: "TEste",
+        name: "Empregado",
         services: [
             {
-                descService: "TEste serviço"
+                descService: "Serviço"
             }
         ]
     }
@@ -17,8 +17,8 @@ export default (state = DEFAULT_STATE, action) => {
             let _new = action.payload.data;
             _new.services = _new.services || [];
             return [...state, _new];
-        case "ADD_EMPLOYEE_REJECT":
-            console.log("ERROu")
+        case "ADD_EMPLOYEE_REJECTED":
+            console.log("ERROu", action);
             return "";
         default:
             return state;

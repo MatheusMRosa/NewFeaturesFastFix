@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
-// import {RegisterList} from './RegisterService';
+import addNewService from '../config/images/add_new_service.jpg'
+import {addServiceInEnployee} from './actionsEmployee'
+import RegisterService from './RegisterService'
 
 const Registered = ({name}) => <div>Nome: {name}</div>;
 
 class ListEmployee extends Component {
     render() {
+        const {addServiceInEnployee} = this.props;
         return (
             <div>{
                 this.props.employees.map(
@@ -17,8 +19,10 @@ class ListEmployee extends Component {
                             <div key={index}>
                                 <Registered {...employee}/>
                                 <br/>
-                                <button>Adicionar novo Serviço</button>
-                                {/*<RegisterList  onSavePressed={this.addEmployee} services = {employee.services}/>*/}
+                                {employee.services.map((service, index) => (<div key={index}>DescService: {service.descService}</div>))}
+                                <RegisterService onSubmit={(values) => {
+                                    addServiceInEnployee(employee, values)
+                                }}/>
                             </div>
                         )
                     })
@@ -31,5 +35,8 @@ class ListEmployee extends Component {
 const mapStoreToProps = (store) => ({
     employees: store.employees
 });
+const mapDispatchToProps = {
+    addServiceInEnployee
+};
 
-export default connect(mapStoreToProps)(ListEmployee);
+export default connect(mapStoreToProps, mapDispatchToProps)(ListEmployee);

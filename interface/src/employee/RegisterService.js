@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 
-export class RegisterList extends Component {
+class RegisterService extends Component {
     render() {
         const {handleSubmit} = this.props;
         return (
@@ -23,4 +23,4 @@ export class RegisterList extends Component {
 
 }
 
-export default reduxForm({form: 'serviceForm'})(RegisterList);
+export default reduxForm({form: 'serviceForm'})(RegisterService);
