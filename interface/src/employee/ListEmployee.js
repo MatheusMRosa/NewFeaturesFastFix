@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import addNewService from '../config/images/add_new_service.jpg'
+// import addNewService from '../config/images/add_new_service.jpg'
 import {addServiceInEnployee} from './actionsEmployee'
 import RegisterService from './RegisterService'
 

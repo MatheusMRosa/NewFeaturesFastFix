@@ -2,24 +2,16 @@ import React, {Component} from 'react';
 import './App.css';
 import RegisterEmployee from './employee/RegisterEmployee';
 import ListEmployee from './employee/ListEmployee';
+import RegisterUser from './user/RegisterUser';
 import {newEmployee, fetchEmployee} from './employee/actionsEmployee';
+import {newUser} from './user/actionsUser';
 
 import {connect} from 'react-redux';
-// import {RegisterList} from "./employee/RegisterService";
 
 //import {featchUser} from './user/login
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.updateList = this.updateList.bind(this);
-    }
-
     componentDidMount() {
-        this.updateList();
-    }
-
-    updateList() {
         this.props.fetchEmployee();
     }
 
@@ -28,6 +20,7 @@ class App extends Component {
             <div className="App">
                 <RegisterEmployee onSubmit={this.props.addEmployee}/>
                 <ListEmployee/>
+                <RegisterUser onSubmit={this.props.addUser}/>
             </div>
         );
     }
@@ -36,8 +29,8 @@ class App extends Component {
 const mapStateToProps = (state) => ({});
 const mapDispatch = {
     addEmployee: newEmployee,
-    fetchEmployee: fetchEmployee
-
+    fetchEmployee: fetchEmployee,
+    addUser: newUser
 };
 
 export default connect(mapStateToProps, mapDispatch)(App);

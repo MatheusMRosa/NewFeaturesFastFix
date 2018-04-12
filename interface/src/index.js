@@ -8,10 +8,12 @@ import promiseMiddleware from 'redux-promise-middleware'
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import employeeReducer from './employee/employeeReducer';
+import userReducer from './user/userReducer'
 
 let store = applyMiddleware(promiseMiddleware())(createStore)(
     combineReducers({
         employees: employeeReducer,
+        user: userReducer,
         form: formReducer,
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

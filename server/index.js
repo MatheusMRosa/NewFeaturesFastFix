@@ -5,14 +5,9 @@ const bodyParser = require('body-parser');
 
 const user = require('./api/user');
 const employee = require('./api/employee');
-const login = require('./api/login');
+//const login = require('./api/login');
 
 const app = express();
-
-
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-
 app.use((req, res, next) => {
     console.log('1', req.originalUrl);
     next();
@@ -29,6 +24,7 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Methods", ["OPTIONS", "GET", "POST", "DELETE", "PUT"]);
     if (req.method === "OPTIONS") {
+
         return res.send("ok")
     }
     next();
@@ -44,21 +40,23 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.post('/api/login', (req, res)=>{
-//     const login = req.body;
-//     // TODO VErificar no banco
-//     console.log(login);
-//     if(login.username == 'mathias' && login.password == '123'){
-//         console.log('aqui')
-//         req.session.user = 'mathias';
-//         req.session.save(()=>{
-//             return res.send('ok');
-//         })
-//         return;
-//     }
-//     return res.sendStatus(403);
-//
-// });
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.post('/api/login', (req, res) => {
+    const login = req.body;
+    // TODO VErificar no banco
+    console.log(login);
+    if (login.username === 'mathias' && login.password === '123') {
+        console.log('aqui');
+        req.session.user = 'mathias';
+        req.session.save(() => {
+            return res.send('ok');
+        });
+        return;
+    }
+    return res.sendStatus(403);
+
+});
 
 const auth = (req, res, next) => {
     if (req.session && req.session.user) {
@@ -66,12 +64,11 @@ const auth = (req, res, next) => {
     }
     return res.sendStatus(403)
 };
-
-app.use("/api/user", auth, user);
+app.use("/api/user", user);
 
 app.use('/api/employee', auth, employee);
 
-app.use('/api/login', login);
+//app.use('/api/login', login);
 
 
 app.listen(3030, '0.0.0.0', () => {
