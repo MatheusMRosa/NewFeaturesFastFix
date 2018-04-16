@@ -18,7 +18,7 @@ export default (state = DEFAULT_STATE, action) => {
             _new.services = _new.services || [];
             return [...state, _new];
         case "ADD_EMPLOYEE_REJECTED":
-            console.log("ERROu", action);
+            console.log("ERROR", action);
             return "";
         default:
             return state;
