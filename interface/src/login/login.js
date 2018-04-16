@@ -8,24 +8,26 @@ class LoginUser extends Component {
             <table>
                 <thead>
                 <tr>
-                    <td>Usuário: </td>
+                    <td className="input-group-text" id="basic-addon1">Usuário:</td>
                     <td><Field component="input"
                                placeholder="Digite seu usuário"
                                type="text"
-                               name="name"/></td>
+                               name="user"
+                               className="form-control"/></td>
                 </tr>
                 <tr>
-                    <td>Senha: </td>
+                    <td className="input-group-text" id="basic-addon1">Senha:</td>
                     <td><Field component="input"
                                placeholder="Digite sua Senha"
-                               type="text"
-                               name="name"/></td>
+                               type="password"
+                               name="pass"
+                               className="form-control"/></td>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
-                        <button onClick={handleSubmit}>Login</button>
+                        <button onClick={handleSubmit} className="btn btn-outline-success">Login</button>
                     </td>
                 </tr>
                 </tbody>

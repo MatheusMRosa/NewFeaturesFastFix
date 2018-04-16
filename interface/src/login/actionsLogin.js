@@ -6,8 +6,7 @@ const URL = URL_BASE.getURL() + "login";
 export const verifyLogin = (user) => {
     const _new = {...user};
     return ({
-        type: "ADD_SERVICE",
-        payload: axios.post(URL, {username:'mathias', password:'123'})
-
+        type: "VERIFY_USER",
+        payload: axios.post(URL,_new)
     });
 };

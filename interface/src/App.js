@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import './App.css';
+import LoginUser from './login/login';
 import RegisterEmployee from './employee/RegisterEmployee';
 import ListEmployee from './employee/ListEmployee';
-import RegisterUser from './user/RegisterUser';
+// import RegisterUser from './user/RegisterUser';
 import {newEmployee, fetchEmployee} from './employee/actionsEmployee';
 import {newUser} from './user/actionsUser';
+import {verifyLogin} from './login/actionsLogin';
 
 import {connect} from 'react-redux';
-
-//import {featchUser} from './user/login
 
 class App extends Component {
     componentDidMount() {
@@ -18,9 +18,10 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                <LoginUser onSubmit={this.props.verifyLogin}/>
                 <RegisterEmployee onSubmit={this.props.addEmployee}/>
                 <ListEmployee/>
-                <RegisterUser onSubmit={this.props.addUser}/>
+                {/*<RegisterUser onSubmit={this.props.addUser}/>*/}
             </div>
         );
     }
@@ -28,6 +29,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({});
 const mapDispatch = {
+    verifyLogin: verifyLogin,
     addEmployee: newEmployee,
     fetchEmployee: fetchEmployee,
     addUser: newUser

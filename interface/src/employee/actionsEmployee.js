@@ -5,11 +5,6 @@ axios.defaults.withCredentials = true;
 const URL_BASE = require('../config/defaultVars');
 const URL = URL_BASE.getURL() + "employee";
 
-
-axios.post(URL_BASE.getURL()+"login", {username:'mathias', password:'123'}).then(()=>{
-
-})
-
 export const newEmployee = (values) => ({
     type: "ADD_EMPLOYEE",
     payload: axios.put(URL, {...values})
