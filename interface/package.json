@@ -17,7 +17,10 @@
   },
   "devDependencies": {
     "axios": "^0.18.0",
+    "history": "^4.7.2",
     "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-form": "^7.3.0",
     "redux-promise-middleware": "^5.0.0"

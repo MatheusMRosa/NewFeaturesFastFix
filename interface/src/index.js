@@ -9,15 +9,27 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import employeeReducer from './employee/employeeReducer';
 import userReducer from './user/userReducer'
+import {  routerReducer, routerMiddleware, push } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
+import { Route, Router } from 'react-router'
 
-let store = applyMiddleware(promiseMiddleware())(createStore)(
+const history = createHistory()
+const middleware = routerMiddleware(history);
+
+let store = applyMiddleware(promiseMiddleware(), middleware)(createStore)(
     combineReducers({
         employees: employeeReducer,
         user: userReducer,
         form: formReducer,
+        router: routerReducer
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}>
+    <Router history={history}>
+        {/*<Route exact path="/" component={App}/>*/}
+        <App/>
+    </Router>
+</Provider>, document.getElementById('root'));
 registerServiceWorker();

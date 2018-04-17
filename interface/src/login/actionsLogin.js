@@ -1,4 +1,4 @@
-import axios from "axios/index";
+import axios from "axios";
 
 const URL_BASE = require('../config/defaultVars');
 const URL = URL_BASE.getURL() + "login";

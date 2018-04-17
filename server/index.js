@@ -2,26 +2,32 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-
+const FileStore = require('session-file-store')(session);
 const user = require('./api/user');
 const employee = require('./api/employee');
 const login = require('./api/login');
 
 const app = express();
 
-app.use((req, res, next) => {
-    console.log('1', req.originalUrl);
-    next();
-});
 
 app.use(session({
-
+    store: new FileStore({path:'/tmp/sessions'}),
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge: 86400000 }
 
 }));
+app.use((req, res, next) => {
+    console.log('1', req.session);
+    if(req.session.count){
+        req.session.count++;
+    }else{
+        req.session.count = 1;
+    }
+
+    next();
+});
 
 app.use((req, res, next) => {
 
