@@ -5,19 +5,13 @@ class RegisterService extends Component {
     render() {
         const {handleSubmit} = this.props;
         return (
-            <table>
-                <tbody>
-                <tr>
-                    <td><Field component="input"
-                               placeholder="Nome do Funcionário"
-                               type="text"
-                               name="descService"/></td>
-                    <td>
-                        <button onClick={handleSubmit}>Novo Serviço</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <div>
+                <Field component="input"
+                       placeholder="Nome do Funcionário"
+                       type="text"
+                       name="descService"/>
+                <button onClick={handleSubmit}>Novo Serviço</button>
+            </div>
         )
     }
 

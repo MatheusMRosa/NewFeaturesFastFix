@@ -9,12 +9,14 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import employeeReducer from './employee/employeeReducer';
 import userReducer from './user/userReducer'
-import {  routerReducer, routerMiddleware, push } from 'react-router-redux'
+import {  routerReducer, routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
-import { Route, Router } from 'react-router'
+import { Router, withRouter } from 'react-router'
 
-const history = createHistory()
+const history = createHistory();
 const middleware = routerMiddleware(history);
+
+const NonBlockApp = withRouter(App);
 
 let store = applyMiddleware(promiseMiddleware(), middleware)(createStore)(
     combineReducers({
@@ -28,8 +30,9 @@ let store = applyMiddleware(promiseMiddleware(), middleware)(createStore)(
 
 ReactDOM.render(<Provider store={store}>
     <Router history={history}>
+        <NonBlockApp />
         {/*<Route exact path="/" component={App}/>*/}
-        <App/>
+        {/*<App/>*/}
     </Router>
 </Provider>, document.getElementById('root'));
 registerServiceWorker();

@@ -1,9 +1,23 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
+import {newEmployee} from './actionsEmployee';
+import {push} from "react-router-redux";
+import {connect} from 'react-redux'
+
+let registerSubmit = false;
 
 class RegisterEmployee extends Component {
+    componentDidUpdate() {
+        if (registerSubmit) {
+            this.props.redirect('/list')
+        }
+    }
     render() {
-        const {handleSubmit} = this.props;
+        const {handleSubmit, newEmployee} = this.props;
+        const submit = (values)=>{
+            newEmployee(values);
+            registerSubmit = true
+        };
         return (
             <table>
                 <thead>
@@ -18,7 +32,7 @@ class RegisterEmployee extends Component {
                 <tbody>
                 <tr>
                     <td>
-                        <button onClick={handleSubmit}>Salvar</button>
+                        <button onClick={handleSubmit(submit)}>Salvar</button>
                     </td>
                 </tr>
                 </tbody>
@@ -27,4 +41,11 @@ class RegisterEmployee extends Component {
     }
 }
 
-export default reduxForm({form: 'employeeForm'})(RegisterEmployee);
+const mapStateToProps = state=>({});
+
+const mapDispathToProps=({
+    newEmployee: newEmployee,
+    redirect: push
+});
+
+export default reduxForm({form: 'employeeForm'})(connect(mapStateToProps, mapDispathToProps)(RegisterEmployee));

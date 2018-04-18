@@ -17,7 +17,7 @@ export const fetchEmployee = () => ({
 
 });
 
-export const addServiceInEnployee = (employee, service) => {
+export const addServiceInEmployee = (employee, service) => {
     const _new = {...employee};
     _new.services.push(service);
     return ({

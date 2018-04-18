@@ -18,12 +18,13 @@ export default (state = DEFAULT_STATE, action) => {
             let validated = action.payload.data;
             if (validated === "OK") {
                 console.log("Section Active");
+                return {...state, loged: true};
             } else if (validated === "Fields Nulls") {
                 console.log("Campos Vazios")
             } else {
                 console.log("Problems with a section");
             }
-            return {...state, loged: true};
+            return {...state, loged: false};
         case "VERIFY_USER_REJECTED":
             console.log("Problems with Login");
             return "";
