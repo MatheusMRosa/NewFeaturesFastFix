@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="039c58d9-3e6e-4f5a-a4e6-c56ac1e7d3d0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/interface/src/config/CSS/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/interface/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/interface/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/interface/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface/src/employee/ListEmployee.js" beforeDir="false" afterPath="$PROJECT_DIR$/interface/src/employee/ListEmployee.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface/src/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/interface/src/login/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface/src/user/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/interface/src/user/userReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interface/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/interface/yarn.lock" afterDir="false" />
-    </list>
+    <list default="true" id="039c58d9-3e6e-4f5a-a4e6-c56ac1e7d3d0" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -75,8 +65,8 @@
       <file leaf-file-name="login.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/interface/src/login/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="22" column="69" selection-start-line="22" selection-start-column="69" selection-end-line="22" selection-end-column="69" />
+            <state relative-caret-position="313">
+              <caret line="35" column="76" selection-start-line="35" selection-start-column="71" selection-end-line="35" selection-end-column="76" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -330,12 +320,12 @@
       <workItem from="1523980325803" duration="14000" />
       <workItem from="1523983414999" duration="5013000" />
       <workItem from="1524066220835" duration="5206000" />
-      <workItem from="1524162874406" duration="4918000" />
+      <workItem from="1524162874406" duration="5216000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70368000" />
+    <option name="totallyTimeSpent" value="70666000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1057" extended-state="0" />
@@ -728,8 +718,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/interface/src/login/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="22" column="69" selection-start-line="22" selection-start-column="69" selection-end-line="22" selection-end-column="69" />
+        <state relative-caret-position="313">
+          <caret line="35" column="76" selection-start-line="35" selection-start-column="71" selection-end-line="35" selection-end-column="76" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
