@@ -1,7 +1,7 @@
 const DEFAULT_STATE =
     {
-        user: "admin",
-        pass: "admin",
+        user: "",
+        pass: "",
         loged: false
     }
 ;

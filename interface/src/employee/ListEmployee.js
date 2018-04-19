@@ -29,7 +29,7 @@ class ListEmployee extends Component {
                         return (
                             <div key={index}>
                                 <Registered {...employee}/>
-                                <button onClick={submit(employee, values)}>Adicionar um novo Seriço</button>
+                                {/*<button onClick={submit(employee)}>Adicionar um novo Seriço</button>*/}
                                 <br/>
                                 {employee.services.map((service, index) => (<div key={index}>Descrição do Serviço: {service.descService}</div>))}
 
