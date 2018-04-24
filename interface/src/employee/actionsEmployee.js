@@ -26,3 +26,10 @@ export const addServiceInEmployee = (employee, service) => {
 
     });
 };
+
+export const filterEmployee = (event) => {
+    return ({
+        type: "FILTER_EMPLOYEE",
+        payload: event.target.value.toLowerCase()
+    })
+};

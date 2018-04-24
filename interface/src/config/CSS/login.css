@@ -2,14 +2,14 @@ h4, h5, h6,
 h1, h2, h3 {margin-top: 0;}
 ul, ol {margin: 0;}
 p {margin: 0;}
-html, body{
+.html, .body{
     font-family: 'Open Sans', sans-serif;
-    background: #F6F6F6 url('http://www.arrayform.com/wp-content/uploads/2017/02/back.jpeg') fixed center;
+    background: #F6F6F6 url('../images/backgrond.jpg') fixed center;
     background-size: cover;
     margin:0;
     padding:0;
 }
-body a{
+.body a{
     transition:0.5s all;
     -webkit-transition:0.5s all;
     -moz-transition:0.5s all;

@@ -7,6 +7,7 @@ import '../config/CSS/login.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
+import iconUser from '../config/images/iconUser.png'
 
 class LoginUser extends Component {
     componentDidUpdate(){
@@ -29,14 +30,14 @@ class LoginUser extends Component {
                                 <div className="view view-tenth">
                                     <div className="inner_content clearfix">
                                         <div className="product_image">
-                                            <img src="http://www.arrayform.com/wp-content/uploads/2017/02/user@2x.png"
+                                            <img src={iconUser}
                                                  className="img-responsive" alt="" style={{margin:"0% auto"}}/>
                                         </div>
                                         <div className="label-product">
-                                            <span className="new">USER LOGIN</span>
+                                            <span className="new">Login</span>
                                         </div>
                                         <div className="mask" style={{width:"100% !important"}}>
-                                            <h2>Welcome User</h2>
+                                            <h2>Bem-Vindo Usuário</h2>
                                             <div className="main">
                                                 <form>
                                                     <Field component="input"

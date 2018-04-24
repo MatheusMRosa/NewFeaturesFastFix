@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import './App.css';
-import LoginUser from './login/login';
+import LoginUser from './login/LoginScreen';
 import RegisterEmployee from './employee/RegisterEmployee';
-import ListEmployee from './employee/ListEmployee';
+// import ListEmployee from './employee/ListEmployee';
 import RegisterService from './employee/RegisterService';
+import HomePageList from './employee/HomePageList';
 // import RegisterUser from './user/RegisterUser';
 // import {newEmployee, fetchEmployee} from './employee/actionsEmployee';
 // import {newUser} from './user/actionsUser';
@@ -21,7 +22,7 @@ class App extends Component {
             <div className="App">
                 <Route exact path="/" component={LoginUser}/>
                 <Route path="/register" component={RegisterEmployee}/>
-                <Route path="/list" component={ListEmployee}/>
+                <Route path="/list" component={HomePageList}/>
                 <Route path="/registerService" component={RegisterService}/>
                 {/*<LoginUser onSubmit={this.props.verifyLogin}/>*/}
                 {/*<RegisterEmployee onSubmit={this.props.addEmployee}/>*/}

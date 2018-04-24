@@ -1,27 +1,28 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addServiceInEmployee} from './actionsEmployee';
-// import RegisterService from './RegisterService';
-import {fetchEmployee} from './actionsEmployee'
-// import addNewService from '../config/images/add_new_service.jpg'
-import {Field, reduxForm} from 'redux-form';
-import {push} from "react-router-redux";
+import {fetchEmployee} from './actionsEmployee';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'popper.js';
+import '../../node_modules/bootstrap/dist/js/bootstrap';
+import '../config/CSS/listEmployee.css';
 
 
-const Registered = ({name}) => <div>Nome: {name}</div>;
+const Registered = ({name}) => <div className="text-center">Nome: {name}</div>;
 
 class ListEmployee extends Component {
     componentDidMount() {
         this.props.fetchEmployee();
     }
+
     render() {
         // const {addServiceInEmployee} = this.props;
-        const {addServiceInEmployee} = this.props;
-        const submit = (employee, values)=>{
-            addServiceInEmployee(employee, values);
-        };
+        // const {addServiceInEmployee} = this.props;
+        // const submit = (employee, values) => {
+        //     addServiceInEmployee(employee, values);
+        // };
         return (
-            <div>{
+            <div className="custab">{
                 this.props.employees.map(
                     (employee, index) => {
                         if (!employee.services)
@@ -30,15 +31,16 @@ class ListEmployee extends Component {
                             <div key={index}>
                                 <Registered {...employee}/>
                                 {/*<button onClick={submit(employee)}>Adicionar um novo Seriço</button>*/}
-                                <br/>
-                                {employee.services.map((service, index) => (<div key={index}>Descrição do Serviço: {service.descService}</div>))}
-
+                                {employee.services.map((service, index) => (
+                                    <div key={index}>Descrição do Serviço: {service.descService}</div>
+                                ))}
                                 {/*<RegisterService onSubmit={(values) => {*/}
-                                    {/*addServiceInEmployee(employee, values)*/}
+                                {/*addServiceInEmployee(employee, values)*/}
                                 {/*}}/>*/}
                             </div>
                         )
-                    })
+                    }
+                )
             }
             </div>
         )
@@ -46,7 +48,7 @@ class ListEmployee extends Component {
 }
 
 const mapStoreToProps = (store) => ({
-    employees: store.employees
+    employees: store.employees.filteredList
 });
 const mapDispatchToProps = {
     addServiceInEmployee: addServiceInEmployee,
