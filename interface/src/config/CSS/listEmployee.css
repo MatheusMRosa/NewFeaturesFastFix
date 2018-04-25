@@ -1,11 +1,11 @@
-.custab{
-    border: 1px solid #ccc;
-    padding: 5px;
-    margin: 5% 0;
-    box-shadow: 3px 3px 2px #ccc;
-    transition: 0.5s;
+.divTable {
+    margin-top: 30px;
+    width: 1000px;
 }
-.custab:hover{
-    box-shadow: 3px 3px 0 transparent;
-    transition: 0.5s;
+.img {
+    horiz-align: center;
+    vertical-align: center;
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
 }

@@ -22,7 +22,7 @@ export default (state = DEFAULT_STATE, action) => {
         case "ADD_EMPLOYEE_FULFILLED":
             let _new = action.payload.data;
             _new.services = _new.services || [];
-            return {...state, list: [...state.lista, _new]};
+            return {...state, list: [...state.list, _new]};
         case "ADD_EMPLOYEE_REJECTED":
             console.log("ERROR", action);
             return "";
