@@ -2,7 +2,7 @@ const DEFAULT_STATE =
     {
         user: "",
         pass: "",
-        loged: false
+        logged: false
     }
 ;
 
@@ -17,16 +17,20 @@ export default (state = DEFAULT_STATE, action) => {
         case "VERIFY_USER_FULFILLED":
             let validated = action.payload.data;
             if (validated === "OK") {
-                console.log("Section Active");
-                return {...state, loged: true};
+                return {...state, logged: true};
             } else if (validated === "Fields Nulls") {
-                console.log("Campos Vazios")
+                console.log("Fields Nulls")
             } else {
                 console.log("Problems with a section");
             }
-            return {...state, loged: false};
+            return {...state, logged: false};
         case "VERIFY_USER_REJECTED":
-            console.log("Problems with Login");
+            let validateStatus = action.payload.response.status;
+            if (validateStatus === 403){
+                console.log("Forbidden")
+            } else {
+                console.log("Problems with Login");
+            }
             return "";
         default:
             return state;

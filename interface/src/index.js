@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import {reducer as formReducer} from 'redux-form'
-import promiseMiddleware from 'redux-promise-middleware'
-import {createStore, combineReducers, applyMiddleware} from 'redux'
-import {Provider} from 'react-redux'
+import {reducer as formReducer} from 'redux-form';
+import promiseMiddleware from 'redux-promise-middleware';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
 import employeeReducer from './employee/employeeReducer';
-import userReducer from './user/userReducer'
-import {  routerReducer, routerMiddleware } from 'react-router-redux'
-import createHistory from 'history/createBrowserHistory'
-import { Router, withRouter } from 'react-router'
+import userReducer from './user/userReducer';
+import {routerReducer, routerMiddleware} from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
+import {Router, withRouter} from 'react-router';
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
@@ -31,8 +31,6 @@ let store = applyMiddleware(promiseMiddleware(), middleware)(createStore)(
 ReactDOM.render(<Provider store={store}>
     <Router history={history}>
         <NonBlockApp />
-        {/*<Route exact path="/" component={App}/>*/}
-        {/*<App/>*/}
     </Router>
 </Provider>, document.getElementById('root'));
 registerServiceWorker();

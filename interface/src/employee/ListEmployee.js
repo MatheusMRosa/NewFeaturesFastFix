@@ -11,11 +11,26 @@ import addNewService from '../config/images/add_new_service.jpg';
 
 const Registered = ({name}) => <td className="text-left col-lg-12">{name}</td>;
 
-class ListEmployee extends Component {
-    componentDidMount() {
-        this.props.fetchEmployee();
-    }
+const Services = (employee) => (
+    <table style={{width: '100%'}}>
+        <tbody>
+        {employee.services.map((service, index) => (
+            <tr key={index}>
+                <td className="text-left">Descrição do Serviço: {service.descService}</td>
+                <td>oi</td>
+                <td>tchau</td>
+            </tr>
+        ))}
+        </tbody>
+    </table>
+);
 
+class ListEmployee extends Component {
+    componentWillMount() {
+        if (this.props.logged) {
+            this.props.fetchEmployee();
+        }
+    }
     render() {
         return (
             <div className="container divTable">
@@ -38,21 +53,12 @@ class ListEmployee extends Component {
                                                 data-target={"#" + employee._id}>Serviços
                                         </button>
                                     </td>
-                                    <td align="right"><img src={addNewService} className="img" id={employee._id} alt="" onClick={() => console.log("OLA tudo bem")}/></td>
+                                    <td align="right"><img src={addNewService} className="img" alt=""
+                                                           onClick={() => console.log("OLA tudo bem")}/></td>
                                 </tr>
                                 <tr id={employee._id} className="collapse">
                                     <td colSpan={3}>
-                                        <table style={{width: '100%'}}>
-                                            <tbody>
-                                            {employee.services.map((service, index) => (
-                                                <tr key={index}>
-                                                    <td>Descrição do Serviço: {service.descService}</td>
-                                                    <td>oi</td>
-                                                    <td>tchau</td>
-                                                </tr>
-                                            ))}
-                                            </tbody>
-                                        </table>
+                                        <Services {...employee}/>
                                     </td>
                                 </tr>
                                 </tbody>

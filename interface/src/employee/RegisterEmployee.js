@@ -8,7 +8,7 @@ let registerSubmit = false;
 
 class RegisterEmployee extends Component {
     componentDidUpdate() {
-        if (registerSubmit) {
+        if ((registerSubmit) && (this.props.logged)) {
             this.props.redirect('/list')
         }
     }
@@ -43,9 +43,9 @@ class RegisterEmployee extends Component {
 
 const mapStateToProps = state=>({});
 
-const mapDispathToProps=({
+const mapDispatchToProps=({
     newEmployee: newEmployee,
     redirect: push
 });
 
-export default reduxForm({form: 'employeeForm'})(connect(mapStateToProps, mapDispathToProps)(RegisterEmployee));
+export default reduxForm({form: 'employeeForm'})(connect(mapStateToProps, mapDispatchToProps)(RegisterEmployee));

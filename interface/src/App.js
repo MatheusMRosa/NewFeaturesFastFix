@@ -34,7 +34,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    loged: state.user.loged
+    logged: state.user.logged
 });
 // const mapDispatch = {
 //     verifyLogin: verifyLogin,

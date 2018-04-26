@@ -9,19 +9,37 @@ import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
 import iconUser from '../config/images/iconUser.png'
 
+const validate = values => {
+    const errors = {};
+    if (!values.user) {
+        errors.user = 'Campo Obrigatório, Por Favor insira seu Usuário';
+    } else if (!values.pass) {
+        errors.pass = 'Campo Obrigatório, Por Favor insira sua Senha';
+    }
+    return errors
+};
+
+const renderField = ({input, label, type, meta: {touched, error}}) => (
+    <div>
+        <input {...input} placeholder={label} type={type}/>
+        {touched && (error && <div className="alert alert-danger" role="alert">{error}</div>)}
+    </div>
+);
+
 class LoginUser extends Component {
-    componentDidUpdate(){
-        if(this.props.loged){
+    componentDidUpdate() {
+        if (this.props.logged) {
             this.props.redirect('/list')
         }
     }
+
     render() {
-        const {handleSubmit, verifyLogin} = this.props;
-        const submit = (values)=>{
+        const {handleSubmit, verifyLogin, submitting} = this.props;
+        const submit = (values) => {
             verifyLogin(values);
         };
         return (
-            <div className="main" style={{padding:"2%",marginTop:"10%"}} align="center">
+            <div className="main" style={{marginTop: "15%"}} align="center">
                 <div className="col-lg-12">
                     <div className="container">
                         <div className="col-lg-4"/>
@@ -30,30 +48,30 @@ class LoginUser extends Component {
                                 <div className="view view-tenth">
                                     <div className="inner_content clearfix">
                                         <div className="product_image">
-                                            <img src={iconUser}
-                                                 className="img-responsive" alt="" style={{margin:"0% auto"}}/>
+                                            <img src={iconUser} className="img-responsive" alt=""/>
                                         </div>
                                         <div className="label-product">
                                             <span className="new">Login</span>
                                         </div>
-                                        <div className="mask" style={{width:"100% !important"}}>
+                                        <div className="mask">
                                             <h2>Bem-Vindo Usuário</h2>
                                             <div className="main">
                                                 <form>
-                                                    <Field component="input"
-                                                               placeholder="Digite seu usuário"
-                                                               type="text"
-                                                               name="user"
-                                                               className="text"/>
-                                                    <Field component="input"
-                                                           placeholder="Digite sua Senha"
+                                                    <Field component={renderField}
+                                                           label="Digite seu usuário"
+                                                           type="text"
+                                                           name="user"
+                                                           className="text"/>
+                                                    <Field component={renderField}
+                                                           label="Digite sua Senha"
                                                            type="password"
                                                            name="pass"
                                                            className="form-control"/>
-                                                            <div className="submit"><input type="submit"
-                                                                                           onClick={handleSubmit(submit)}
-                                                                                           value="Login"/></div>
-                                                            <div className="clearfix"/>
+                                                    <div className="submit"><input type="submit"
+                                                                                   disabled={submitting}
+                                                                                   onClick={handleSubmit(submit)}
+                                                                                   value="Login"/></div>
+                                                    <div className="clearfix"/>
                                                 </form>
                                             </div>
                                         </div>
@@ -69,13 +87,14 @@ class LoginUser extends Component {
         )
     }
 }
-const mapStateToProps = state=>({
-    loged: state.user.loged
+
+const mapStateToProps = state => ({
+    logged: state.user.logged
 });
 
-const mapDispathToProps=({
+const mapDispatchToProps = ({
     verifyLogin: verifyLogin,
     redirect: push
 });
 
-export default reduxForm({form: 'loginForm'})(connect(mapStateToProps, mapDispathToProps)(LoginUser));
+export default reduxForm({form: 'loginForm', validate})(connect(mapStateToProps, mapDispatchToProps)(LoginUser));

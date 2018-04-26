@@ -1,12 +1,8 @@
 const DEFAULT_STATE = {
     list: [
     {
-        name: "Empregado",
-        services: [
-            {
-                descService: "Serviço"
-            }
-        ]
+        name: "",
+        services: [{}]
     }
 ],
     filteredList: [],
