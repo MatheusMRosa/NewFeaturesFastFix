@@ -11,23 +11,13 @@ const app = express();
 
 
 app.use(session({
-    store: new FileStore({path:'/tmp/sessions'}),
+
+    store: new FileStore({path: '/tmp/sessions'}),
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 86400000 }
-
+    cookie: {maxAge: 86400000}
 }));
-app.use((req, res, next) => {
-    console.log('1', req.session);
-    if(req.session.count){
-        req.session.count++;
-    }else{
-        req.session.count = 1;
-    }
-
-    next();
-});
 
 app.use((req, res, next) => {
 
@@ -43,22 +33,13 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    console.log('2', req.originalUrl);
-    next();
-});
-
-app.use((req, res, next) => {
-    console.log('3', req.originalUrl);
-    next();
-});
-
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 const auth = (req, res, next) => {
+
     if (req.session && req.session.user) {
-        console.log("Nome da Seção::::", req.session.user)
+        console.log("Nome da Seção:::::::::::::::: ", req.session.user);
         return next();
     }
     return res.sendStatus(403)

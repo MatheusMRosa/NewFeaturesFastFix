@@ -48,7 +48,7 @@ class LoginUser extends Component {
                                 <div className="view view-tenth">
                                     <div className="inner_content clearfix">
                                         <div className="product_image">
-                                            <img src={iconUser} className="img-responsive" alt=""/>
+                                            <img src={iconUser} className="img-responsive" alt="" style={{marginLeft: "18%"}}/>
                                         </div>
                                         <div className="label-product">
                                             <span className="new">Login</span>

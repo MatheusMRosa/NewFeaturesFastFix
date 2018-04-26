@@ -31,6 +31,13 @@ class ListEmployee extends Component {
             this.props.fetchEmployee();
         }
     }
+
+    componentDidMount() {
+        if (this.props.logged) {
+            this.props.fetchEmployee();
+        }
+    }
+
     render() {
         return (
             <div className="container divTable">
@@ -70,8 +77,9 @@ class ListEmployee extends Component {
     }
 }
 
-const mapStoreToProps = (store) => ({
-    employees: store.employees.filteredList
+const mapStoreToProps = (state) => ({
+    employees: state.employees.filteredList,
+    logged: state.user.logged
 });
 const mapDispatchToProps = {
     addServiceInEmployee: addServiceInEmployee,
