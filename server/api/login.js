@@ -3,7 +3,15 @@ const user = require('../entities/user');
 
 const app = express();
 
-app.post("", (req, res) => {
+app.get("", (req, res) => {
+    if (req.session.user) {
+        return res.send("Exist Session")
+    } else {
+        return res.sendStatus(500)
+    }
+})
+
+const checkLogin = (req, res) => {
     const login = req.body;
     user.findOne({user: login.user, pass: login.pass}, {}, (err, data) => {
         if (data) {
@@ -16,6 +24,7 @@ app.post("", (req, res) => {
             res.send('OK')
 
         } else {
+            req.session.tryCount =  (req.session.tryCount||1) * 2
             if (login.user === undefined || login.pass === undefined) {
                 return res.send('Fields Nulls')
             } else {
@@ -23,6 +32,16 @@ app.post("", (req, res) => {
             }
         }
     })
+}
+app.post("", (req, res) => {
+    if(req.session && req.session.tryCount){
+        setTimeout(()=>{
+            checkLogin(req, res);
+        }, req.session.tryCount*1000)
+    }else{
+        checkLogin(req, res);
+    }
+    
 });
 
 

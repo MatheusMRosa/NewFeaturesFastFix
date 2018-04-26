@@ -5,10 +5,15 @@ import RegisterEmployee from './employee/RegisterEmployee';
 import RegisterService from './employee/RegisterService';
 import HomePageList from './employee/HomePageList';
 import ForbiddenUser from './login/UserForbidden';
-import {Route} from 'react-router'
+import {verifySession} from './login/actionsLogin';
+import {Route} from 'react-router';
 import {connect} from 'react-redux';
 
 class App extends Component {
+    componentDidMount() {
+      this.props.verifySession()
+     }
+     
     render() {
         return (
             <div className="App">
@@ -26,4 +31,8 @@ const mapStateToProps = (state) => ({
     logged: state.user.logged
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = ({
+    verifySession: verifySession
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

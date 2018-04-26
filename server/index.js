@@ -12,7 +12,7 @@ const app = express();
 
 app.use(session({
 
-    store: new FileStore({path: '/tmp/sessions'}),
+    //store: new FileStore({path: '/tmp/sessions'}),
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,

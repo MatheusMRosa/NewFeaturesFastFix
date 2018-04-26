@@ -2,7 +2,8 @@ const DEFAULT_STATE =
     {
         user: "",
         pass: "",
-        logged: false
+        logged: false,
+        error: ""
     }
 ;
 
@@ -28,10 +29,13 @@ export default (state = DEFAULT_STATE, action) => {
             let validateStatus = action.payload.response.status;
             if (validateStatus === 403){
                 console.log("Forbidden")
+                return {...state, error: "403"}
             } else {
                 console.log("Problems with Login");
             }
-            return "";
+            return state;
+        case "VERIFY_SESSION_FULFILLED":
+                return {...state, logged: true}
         default:
             return state;
     }

@@ -26,10 +26,12 @@ const Services = (employee) => (
 );
 
 class ListEmployee extends Component {
-    componentWillMount() {
-        if (this.props.logged) {
+
+    shouldComponentUpdate(nextProps) {
+        if (!this.props.logged && nextProps.logged) {
             this.props.fetchEmployee();
         }
+        return true;
     }
 
     componentDidMount() {

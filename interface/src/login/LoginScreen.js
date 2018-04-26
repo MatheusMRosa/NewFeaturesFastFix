@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux'
-import {verifyLogin} from "./actionsLogin";
+import {verifyLogin, verifySession} from "./actionsLogin";
 import {push} from "react-router-redux";
 import '../config/CSS/login.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -27,6 +27,11 @@ const renderField = ({input, label, type, meta: {touched, error}}) => (
 );
 
 class LoginUser extends Component {
+
+    componentDidMount() {
+       this.props.verifySession()
+    }
+
     componentDidUpdate() {
         if (this.props.logged) {
             this.props.redirect('/list')
@@ -71,6 +76,7 @@ class LoginUser extends Component {
                                                                                    disabled={submitting}
                                                                                    onClick={handleSubmit(submit)}
                                                                                    value="Login"/></div>
+                                                    {this.props.forbidden? <div className="alert alert-danger">Error</div>: null}
                                                     <div className="clearfix"/>
                                                 </form>
                                             </div>
@@ -89,11 +95,13 @@ class LoginUser extends Component {
 }
 
 const mapStateToProps = state => ({
-    logged: state.user.logged
+    logged: state.user.logged,
+    forbidden: state.user.error
 });
 
 const mapDispatchToProps = ({
     verifyLogin: verifyLogin,
+    verifySession: verifySession,
     redirect: push
 });
 

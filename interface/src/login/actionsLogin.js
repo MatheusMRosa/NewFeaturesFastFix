@@ -10,3 +10,10 @@ export const verifyLogin = (user) => {
         payload: axios.post(URL,_new)
     });
 };
+
+export const verifySession = () => {
+    return ({
+        type: "VERIFY_SESSION",
+        payload: axios.get(URL)
+    });
+};
