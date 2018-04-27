@@ -33,3 +33,10 @@ export const filterEmployee = (event) => {
         payload: event.target.value.toLowerCase()
     })
 };
+
+export const saveEmployeeForAddService = (employee) => {
+    return ({
+       type: "EMPLOYEE_SELECTED",
+       payload: employee
+    });
+};

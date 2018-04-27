@@ -6,7 +6,7 @@ const employee = new schema({
     services: [
         {
             descService: {type: 'String'},
-            time: {type: 'String'},
+            time: {type: Date, default: Date.now},
             estimate: {type: 'String'},
             done: {type: 'Boolean'}
         }

@@ -4,19 +4,19 @@ import {newEmployee} from './actionsEmployee';
 import {push} from "react-router-redux";
 import {connect} from 'react-redux'
 
-let registerSubmit = false;
-
 class RegisterEmployee extends Component {
     componentDidUpdate() {
-        if ((registerSubmit) && (this.props.logged)) {
+        if (!this.props.logged) {
+            this.props.redirect('/')
+        } else if (this.props.employeeSaved && this.props.logged) {
             this.props.redirect('/list')
         }
     }
+
     render() {
         const {handleSubmit, newEmployee} = this.props;
-        const submit = (values)=>{
+        const submit = (values) => {
             newEmployee(values);
-            registerSubmit = true
         };
         return (
             <table>
@@ -41,9 +41,12 @@ class RegisterEmployee extends Component {
     }
 }
 
-const mapStateToProps = state=>({});
+const mapStateToProps = state => ({
+    logged: state.user.logged,
+    employeeSaved: state.employees.employeeSaved
+});
 
-const mapDispatchToProps=({
+const mapDispatchToProps = ({
     newEmployee: newEmployee,
     redirect: push
 });

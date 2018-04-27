@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {addServiceInEmployee} from './actionsEmployee';
-import {fetchEmployee} from './actionsEmployee';
+import {push} from "react-router-redux";
+import {fetchEmployee, saveEmployeeForAddService} from './actionsEmployee';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
@@ -17,8 +17,13 @@ const Services = (employee) => (
         {employee.services.map((service, index) => (
             <tr key={index}>
                 <td className="text-left">Descrição do Serviço: {service.descService}</td>
-                <td>oi</td>
-                <td>tchau</td>
+                <td>Estimativa de Tempo: {service.estimate} hrs</td>
+                <td align="right">
+                    <label className="switch">
+                        <input type="checkbox"/>
+                        <span className="slider round"/>
+                    </label>
+                </td>
             </tr>
         ))}
         </tbody>
@@ -37,6 +42,8 @@ class ListEmployee extends Component {
     componentDidMount() {
         if (this.props.logged) {
             this.props.fetchEmployee();
+        } else {
+            this.props.redirect('/');
         }
     }
 
@@ -63,7 +70,10 @@ class ListEmployee extends Component {
                                         </button>
                                     </td>
                                     <td align="right"><img src={addNewService} className="img" alt=""
-                                                           onClick={() => console.log("OLA tudo bem")}/></td>
+                                                           onClick={() => {
+                                                               this.props.saveEmployeeForAddService(employee);
+                                                               this.props.redirect('./registerservice')
+                                                           }}/></td>
                                 </tr>
                                 <tr id={employee._id} className="collapse">
                                     <td colSpan={3}>
@@ -84,8 +94,9 @@ const mapStoreToProps = (state) => ({
     logged: state.user.logged
 });
 const mapDispatchToProps = {
-    addServiceInEmployee: addServiceInEmployee,
-    fetchEmployee: fetchEmployee
+    fetchEmployee: fetchEmployee,
+    saveEmployeeForAddService: saveEmployeeForAddService,
+    redirect: push
 };
 
 export default connect(mapStoreToProps, mapDispatchToProps)(ListEmployee);
