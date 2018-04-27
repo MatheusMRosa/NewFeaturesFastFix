@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from "react-router-redux";
-import {fetchEmployee, saveEmployeeForAddService} from './actionsEmployee';
+import {fetchEmployee, saveEmployeeForAddService, alterStatusService} from './actionsEmployee';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
@@ -19,10 +19,32 @@ const Services = (employee) => (
                 <td className="text-left">Descrição do Serviço: {service.descService}</td>
                 <td>Estimativa de Tempo: {service.estimate} hrs</td>
                 <td align="right">
-                    <label className="switch">
-                        <input type="checkbox"/>
-                        <span className="slider round"/>
-                    </label>
+                    <button type="button" className="btn btn-info" data-toggle="modal"
+                            data-target={"#" + service._id}>
+                        Finalizar Serviço
+                    </button>
+                    <div className="modal fade" id={service._id} tabIndex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered" role="document">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="exampleModalLongTitle">Finalizar Serviço</h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div className="modal-body">
+                                    <div>Tempo Gasto: <input type="time"/></div>
+                                    {console.log("Validar se está no Prazo")}
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar
+                                    </button>
+                                    <button type="button" className="btn btn-primary" onClick={() => {console.log("Erro")}}>Finalizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         ))}
@@ -96,6 +118,7 @@ const mapStoreToProps = (state) => ({
 const mapDispatchToProps = {
     fetchEmployee: fetchEmployee,
     saveEmployeeForAddService: saveEmployeeForAddService,
+    alterStatusService: alterStatusService,
     redirect: push
 };
 

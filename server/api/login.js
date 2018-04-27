@@ -9,7 +9,7 @@ app.get("", (req, res) => {
     } else {
         return res.sendStatus(500)
     }
-})
+});
 
 const checkLogin = (req, res) => {
     const login = req.body;
@@ -24,7 +24,7 @@ const checkLogin = (req, res) => {
             res.send('OK')
 
         } else {
-            req.session.tryCount =  (req.session.tryCount||1) * 2
+            req.session.tryCount = (req.session.tryCount || 1) * 2
             if (login.user === undefined || login.pass === undefined) {
                 return res.send('Fields Nulls')
             } else {
@@ -32,18 +32,18 @@ const checkLogin = (req, res) => {
             }
         }
     })
-}
+};
+
 app.post("", (req, res) => {
-    if(req.session && req.session.tryCount){
-        setTimeout(()=>{
+    if (req.session && req.session.tryCount) {
+        setTimeout(() => {
             checkLogin(req, res);
-        }, req.session.tryCount*1000)
-    }else{
+        }, req.session.tryCount * 1000)
+    } else {
         checkLogin(req, res);
     }
-    
-});
 
+});
 
 
 module.exports = app;

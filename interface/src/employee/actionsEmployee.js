@@ -40,3 +40,13 @@ export const saveEmployeeForAddService = (employee) => {
        payload: employee
     });
 };
+
+export const alterStatusService = (employee, service, values) => {
+    console.log("Employee", employee)
+    console.log("s", service)
+    console.log("v", values)
+    return ({
+        type: "ALTER_SERVICE",
+        payload: axios.post(URL+'/'+employee+'/'+service, values)
+    });
+};

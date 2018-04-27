@@ -49,4 +49,20 @@ app.post("/:id", (req, res) => {
     })
 });
 
+app.post("/:id/:idservice", (req, res) => {
+    employee.findById(req.params.id, {}, (err, employee) => {
+        console.log(req);
+        if (err) {
+            return res.sendStatus(500)
+        } else {
+            employee.services.findById(req.params.idservice, {}, (err, data) => {
+                if (err) {
+                    return res.sendStatus(503)
+                }
+                res.json(data || [])
+            })
+        }
+    })
+});
+
 module.exports = app;

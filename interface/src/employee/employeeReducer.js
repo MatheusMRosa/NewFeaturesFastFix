@@ -39,6 +39,9 @@ export default (state = DEFAULT_STATE, action) => {
             };
         case "EMPLOYEE_SELECTED":
             return {...state, employeeSelected: action.payload};
+        case "ALTER_SERVICE_FULFILLED":
+            console.log(action)
+            return state;
         default:
             return state;
     }
