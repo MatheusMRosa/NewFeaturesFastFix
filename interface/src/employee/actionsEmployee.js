@@ -1,4 +1,5 @@
 import axios from "axios/index";
+
 axios.defaults.withCredentials = true;
 // axios.defaults.crossDomain = true;
 
@@ -22,7 +23,7 @@ export const addServiceInEmployee = (employee, service) => {
     _new.services.push(service);
     return ({
         type: "ADD_SERVICE",
-        payload: axios.post(URL+'/'+_new._id, _new)
+        payload: axios.post(URL + '/' + _new._id, _new)
 
     });
 };
@@ -36,17 +37,22 @@ export const filterEmployee = (event) => {
 
 export const saveEmployeeForAddService = (employee) => {
     return ({
-       type: "EMPLOYEE_SELECTED",
-       payload: employee
+        type: "EMPLOYEE_SELECTED",
+        payload: employee
+    });
+};
+
+export const listThisEmployee = (employee) => {
+    return ({
+        type: "THIS_EMPLOYEE",
+        payload: employee
     });
 };
 
 export const alterStatusService = (employee, service, values) => {
-    console.log("Employee", employee)
-    console.log("s", service)
-    console.log("v", values)
     return ({
         type: "ALTER_SERVICE",
-        payload: axios.post(URL+'/'+employee+'/'+service, values)
+        payload: axios.post(URL + '/' + employee + '/' + service, values)
     });
 };
+

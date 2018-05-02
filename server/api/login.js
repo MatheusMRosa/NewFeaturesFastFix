@@ -24,7 +24,7 @@ const checkLogin = (req, res) => {
             res.send('OK')
 
         } else {
-            req.session.tryCount = (req.session.tryCount || 1) * 2
+            req.session.tryCount = (req.session.tryCount || 1) * 2;
             if (login.user === undefined || login.pass === undefined) {
                 return res.send('Fields Nulls')
             } else {

@@ -4,7 +4,7 @@ const employee = require('../entities/employee');
 const app = express();
 
 app.get("", (req, res) => {
-    employee.find({},  null, {sort: {name: 1}}, (err, data) => {
+    employee.find({}, null, {sort: {name: 1}}, (err, data) => {
         if (err) {
             return res.sendStatus(500)
         }
@@ -50,18 +50,13 @@ app.post("/:id", (req, res) => {
 });
 
 app.post("/:id/:idservice", (req, res) => {
-    employee.findById(req.params.id, {}, (err, employee) => {
-        console.log(req);
+    employee.findByIdAndUpdate(req.params.id, {"services.idservice": {done: req.body.done, delay: req.body.delay}}, (err, data) => {
         if (err) {
             return res.sendStatus(500)
-        } else {
-            employee.services.findById(req.params.idservice, {}, (err, data) => {
-                if (err) {
-                    return res.sendStatus(503)
-                }
-                res.json(data || [])
-            })
         }
+        console.log(req.body)
+        console.log(data);
+        return res.sendStatus(200)
     })
 });
 

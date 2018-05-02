@@ -9,7 +9,8 @@ const DEFAULT_STATE = {
     filterValue: '',
     employeeSelected: undefined,
     employeeSaved: false,
-    serviceAdded: false
+    serviceAdded: false,
+    thisEmployee: undefined
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -40,8 +41,10 @@ export default (state = DEFAULT_STATE, action) => {
         case "EMPLOYEE_SELECTED":
             return {...state, employeeSelected: action.payload};
         case "ALTER_SERVICE_FULFILLED":
-            console.log(action)
+            console.log(action);
             return state;
+        case "THIS_EMPLOYEE":
+            return {...state, thisEmployee: action.payload};
         default:
             return state;
     }

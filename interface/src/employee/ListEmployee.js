@@ -1,56 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from "react-router-redux";
-import {fetchEmployee, saveEmployeeForAddService, alterStatusService} from './actionsEmployee';
+import {fetchEmployee, saveEmployeeForAddService, listThisEmployee} from './actionsEmployee';
+import ServicesList from './servicesList';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
 import '../config/CSS/listEmployee.css';
 import addNewService from '../config/images/add_new_service.jpg';
 
-
 const Registered = ({name}) => <td className="text-left col-lg-12">{name}</td>;
-
-const Services = (employee) => (
-    <table style={{width: '100%'}}>
-        <tbody>
-        {employee.services.map((service, index) => (
-            <tr key={index}>
-                <td className="text-left">Descrição do Serviço: {service.descService}</td>
-                <td>Estimativa de Tempo: {service.estimate} hrs</td>
-                <td align="right">
-                    <button type="button" className="btn btn-info" data-toggle="modal"
-                            data-target={"#" + service._id}>
-                        Finalizar Serviço
-                    </button>
-                    <div className="modal fade" id={service._id} tabIndex="-1" role="dialog"
-                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLongTitle">Finalizar Serviço</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <div>Tempo Gasto: <input type="time"/></div>
-                                    {console.log("Validar se está no Prazo")}
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar
-                                    </button>
-                                    <button type="button" className="btn btn-primary" onClick={() => {console.log("Erro")}}>Finalizar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        ))}
-        </tbody>
-    </table>
-);
 
 class ListEmployee extends Component {
 
@@ -88,7 +47,9 @@ class ListEmployee extends Component {
                                     <Registered {...employee}/>
                                     <td align="right">
                                         <button className="btn btn-secondary" data-toggle="collapse"
-                                                data-target={"#" + employee._id}>Serviços
+                                                data-target={"#" + employee._id} onClick={() => {
+                                            this.props.listThisEmployee(employee)
+                                        }}>Serviços
                                         </button>
                                     </td>
                                     <td align="right"><img src={addNewService} className="img" alt=""
@@ -99,7 +60,7 @@ class ListEmployee extends Component {
                                 </tr>
                                 <tr id={employee._id} className="collapse">
                                     <td colSpan={3}>
-                                        <Services {...employee}/>
+                                        <ServicesList/>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -118,7 +79,7 @@ const mapStoreToProps = (state) => ({
 const mapDispatchToProps = {
     fetchEmployee: fetchEmployee,
     saveEmployeeForAddService: saveEmployeeForAddService,
-    alterStatusService: alterStatusService,
+    listThisEmployee: listThisEmployee,
     redirect: push
 };
 
