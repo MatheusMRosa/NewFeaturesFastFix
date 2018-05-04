@@ -10,7 +10,7 @@ const DEFAULT_STATE = {
     employeeSelected: undefined,
     employeeSaved: false,
     serviceAdded: false,
-    thisEmployee: undefined
+    delay: false
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -40,11 +40,13 @@ export default (state = DEFAULT_STATE, action) => {
             };
         case "EMPLOYEE_SELECTED":
             return {...state, employeeSelected: action.payload};
-        case "ALTER_SERVICE_FULFILLED":
-            console.log(action);
+        case "DELAY":
+            if (action.payload) {
+                return {...state, delay: true}
+            }
             return state;
-        case "THIS_EMPLOYEE":
-            return {...state, thisEmployee: action.payload};
+        case "ALTER_SERVICE_FULFILLED":
+            return state;
         default:
             return state;
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from "react-router-redux";
-import { fetchEmployee, saveEmployeeForAddService, listThisEmployee } from './actionsEmployee';
+import { fetchEmployee, saveEmployeeForAddService } from './actionsEmployee';
 import ServicesList from './servicesList';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
@@ -47,9 +47,7 @@ class ListEmployee extends Component {
                                         <Registered {...employee} />
                                         <td align="right">
                                             <button className="btn btn-secondary" data-toggle="collapse"
-                                                data-target={"#" + employee._id} onClick={() => {
-                                                    this.props.listThisEmployee(employee)
-                                                }}>Serviços
+                                                data-target={"#" + employee._id} >Serviços
                                         </button>
                                         </td>
                                         <td align="right"><img src={addNewService} className="img" alt=""
@@ -79,7 +77,6 @@ const mapStoreToProps = (state) => ({
 const mapDispatchToProps = {
     fetchEmployee: fetchEmployee,
     saveEmployeeForAddService: saveEmployeeForAddService,
-    listThisEmployee: listThisEmployee,
     redirect: push
 };
 

@@ -42,12 +42,13 @@ export const saveEmployeeForAddService = (employee) => {
     });
 };
 
-export const listThisEmployee = (employee) => {
+export const employeeDelay = (delay) => {
     return ({
-        type: "THIS_EMPLOYEE",
-        payload: employee
-    });
+        type: "DELAY",
+        payload: delay
+    })
 };
+
 
 export const alterStatusService = (employee, service, values) => {
     return ({

@@ -58,6 +58,7 @@ app.post("/:id/:idservice", (req, res) => {
             if(data.services[i]._id == req.params.idservice){
                 data.services[i].done = req.body.done;
                 data.services[i].delay = req.body.delay;
+                data.services[i].delayed = req.body.delayed;
             }
         }
         data.markModified('services');
