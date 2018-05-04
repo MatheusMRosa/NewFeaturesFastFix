@@ -56,7 +56,7 @@ class LoginUser extends Component {
                                             <img src={iconUser} className="img-responsive" alt="" style={{marginLeft: "4%"}}/>
                                         </div>
                                         <div className="mask">
-                                            <h2>Bem-Vindo Usuário</h2>
+                                            <h2 style={{color: "black"}}>Bem-Vindo Usuário</h2>
                                             <div className="main">
                                                 <form>
                                                     <Field component={renderField}

@@ -43,7 +43,7 @@ class ServicesList extends Component {
                                                         data-dismiss="modal">Cancelar
                                                 </button>
                                                 <button type="button" className="btn btn-primary" onClick={() => {
-                                                    this.props.alterStatusService(this.props.thisEmployee._id, index,'"done":"true", "delay": "papsapapa"')
+                                                    this.props.alterStatusService(this.props.thisEmployee._id, service._id,{done:true, delay: "papsapapa"})
                                                 }}>Finalizar
                                                 </button>
                                             </div>
@@ -65,7 +65,6 @@ class ServicesList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    thisEmployee: state.employees.thisEmployee
 });
 const mapDispatchToProps = {
     alterStatusService: alterStatusService

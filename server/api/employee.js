@@ -50,13 +50,23 @@ app.post("/:id", (req, res) => {
 });
 
 app.post("/:id/:idservice", (req, res) => {
-    employee.findByIdAndUpdate(req.params.id, {"services.idservice": {done: req.body.done, delay: req.body.delay}}, (err, data) => {
+    employee.findById(req.params.id, (err, data) => {
         if (err) {
             return res.sendStatus(500)
         }
-        console.log(req.body)
-        console.log(data);
-        return res.sendStatus(200)
+        for(let i =0;i< data.services.length; i++){
+            if(data.services[i]._id == req.params.idservice){
+                data.services[i].done = req.body.done;
+                data.services[i].delay = req.body.delay;
+            }
+        }
+        data.markModified('services');
+        data.save((err, data) => {
+            if (err){
+                return res.sendStatus(500)
+            }
+            return res.sendStatus(200)
+        });
     })
 });
 
