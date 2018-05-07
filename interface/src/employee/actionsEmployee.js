@@ -35,6 +35,13 @@ export const filterEmployee = (event) => {
     })
 };
 
+export const filterSituationService = (situation) => {
+    return ({
+        type: "FILTER_SITUATION",
+        payload: situation
+    })
+};
+
 export const saveEmployeeForAddService = (employee) => {
     return ({
         type: "EMPLOYEE_SELECTED",
@@ -48,7 +55,6 @@ export const employeeDelay = (delay) => {
         payload: delay
     })
 };
-
 
 export const alterStatusService = (employee, service, values) => {
     return ({

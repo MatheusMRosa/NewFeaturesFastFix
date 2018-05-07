@@ -10,7 +10,11 @@ const DEFAULT_STATE = {
     employeeSelected: undefined,
     employeeSaved: false,
     serviceAdded: false,
-    delay: false
+    delay: false,
+    situation: '',
+    showOpened: true,
+    showDelayed: true,
+    showServiceOk: true
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -43,8 +47,20 @@ export default (state = DEFAULT_STATE, action) => {
         case "DELAY":
             if (action.payload) {
                 return {...state, delay: true}
+            } else {
+                return {...state, delay: false}
             }
-            return state;
+        case "FILTER_SITUATION":
+            console.log(action.payload)
+            if (action.payload === "opened"){
+                return {...state, showOpened: true, showDelayed: false, showServiceOk: false}
+            } else if (action.payload === "delayed"){
+                return {...state, showOpened: false, showDelayed: true, showServiceOk: false}
+            } else if (action.payload === "ServiceOk"){
+                return {...state, showOpened: false, showDelayed: false, showServiceOk: true}
+            } else {
+                return {...state, showOpened: true, showDelayed: true, showServiceOk: true}
+            }
         case "ALTER_SERVICE_FULFILLED":
             return state;
         default:
