@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "axios": "^0.18.0",
+    "c3": "^0.5.4",
     "history": "^4.7.2",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",

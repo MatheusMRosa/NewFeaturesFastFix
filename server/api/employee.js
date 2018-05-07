@@ -4,7 +4,7 @@ const employee = require('../entities/employee');
 const app = express();
 
 app.get("", (req, res) => {
-    employee.find({}, null, {sort: {name: 1}}, (err, data) => {
+    employee.find({}, null, { sort: { name: 1 } }, (err, data) => {
         if (err) {
             return res.sendStatus(500)
         }
@@ -54,8 +54,8 @@ app.post("/:id/:idservice", (req, res) => {
         if (err) {
             return res.sendStatus(500)
         }
-        for(let i =0;i< data.services.length; i++){
-            if(data.services[i]._id == req.params.idservice){
+        for (let i = 0; i < data.services.length; i++) {
+            if (data.services[i]._id == req.params.idservice) {
                 data.services[i].done = req.body.done;
                 data.services[i].delay = req.body.delay;
                 data.services[i].delayed = req.body.delayed;
@@ -63,12 +63,25 @@ app.post("/:id/:idservice", (req, res) => {
         }
         data.markModified('services');
         data.save((err, data) => {
-            if (err){
+            if (err) {
                 return res.sendStatus(500)
             }
             return res.sendStatus(200)
         });
     })
+});
+
+app.get("/:id/graphic", (req, res) => {
+    employee.findById(req.params.id, (err, employee) => {
+        employee.services.collection.aggregate(
+            [
+               {opened : {done: true}}
+            ]
+        , (err, data) => {
+            console.log(err)
+            console.log("Dados:::",data)
+        })
+    });
 });
 
 module.exports = app;
