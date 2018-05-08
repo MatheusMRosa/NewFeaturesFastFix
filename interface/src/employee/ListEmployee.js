@@ -47,7 +47,6 @@ class ListEmployee extends Component {
                                     <tr data-toggle="collapse"
                                         data-target={"#" + employee._id}>
                                         <Registered {...employee} />
-                                        {console.log(employee._id)}
                                     </tr>
                                     <tr id={employee._id} className="collapse" data-parent="#accordion">
                                         <td colSpan={3}>

@@ -39,7 +39,6 @@ app.use(bodyParser.json());
 const auth = (req, res, next) => {
 
     if (req.session && req.session.user) {
-        console.log("Nome da Seção:::::::::::::::: ", req.session.user);
         return next();
     }
     return res.sendStatus(403)

@@ -8,7 +8,7 @@ class RegisterService extends Component {
 
     componentDidUpdate() {
         if (this.props.serviceAdded){
-            this.props.redirect('/list');
+            this.props.redirect('/');
         }
     }
 

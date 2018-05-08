@@ -13,8 +13,7 @@ export default (state = DEFAULT_STATE, action) => {
             let _new = action.payload.data;
             return {...state, _new};
         case "ADD_USER_REJECTED":
-            console.log("ERROR", action);
-            return "";
+            return state;
         case "VERIFY_USER_FULFILLED":
             let validated = action.payload.data;
             if (validated === "OK") {
@@ -28,7 +27,6 @@ export default (state = DEFAULT_STATE, action) => {
         case "VERIFY_USER_REJECTED":
             let validateStatus = action.payload.response.status;
             if (validateStatus === 403){
-                console.log("Forbidden")
                 return {...state, error: "403"}
             } else {
                 console.log("Problems with Login");

@@ -4,7 +4,7 @@ const employee = require('../entities/employee');
 const app = express();
 
 app.get("", (req, res) => {
-    employee.find({}, null, { sort: { name: 1 } }, (err, data) => {
+    employee.find({}, null, {sort: {name: 1}}, (err, data) => {
         if (err) {
             return res.sendStatus(500)
         }
@@ -55,7 +55,7 @@ app.post("/:id/:idservice", (req, res) => {
             return res.sendStatus(500)
         }
         for (let i = 0; i < data.services.length; i++) {
-            if (data.services[i]._id == req.params.idservice) {
+            if (String(data.services[i]._id) === req.params.idservice) {
                 data.services[i].done = req.body.done;
                 data.services[i].delay = req.body.delay;
                 data.services[i].delayed = req.body.delayed;
@@ -85,12 +85,7 @@ app.get("/:id/graphic", (req, res) => {
                 values['ok']++
             }
             return values
-        }, {
-                'opened': 0,
-                'ok': 0,
-                'delayed': 0
-            }
-        )
+        }, {'opened': 0, 'ok': 0, 'delayed': 0});
         return res.json(result)
     });
 });

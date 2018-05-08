@@ -18,8 +18,6 @@ const checkLogin = (req, res) => {
             if (err) {
                 return res.sendStatus(500)
             }
-            console.log("login", req.session);
-            console.log("login", data);
             req.session.user = data._id;
             res.send('OK')
 

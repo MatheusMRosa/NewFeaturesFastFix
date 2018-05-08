@@ -42,6 +42,13 @@ export const filterSituationService = (situation) => {
     })
 };
 
+export const graphicServices = (employeeId) => {
+  return ({
+      type: "GRAPHIC",
+      payload: axios.get(URL + '/' + employeeId + '/graphic')
+  })
+};
+
 export const saveEmployeeForAddService = (employee) => {
     return ({
         type: "EMPLOYEE_SELECTED",

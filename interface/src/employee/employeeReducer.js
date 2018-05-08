@@ -14,7 +14,9 @@ const DEFAULT_STATE = {
     situation: '',
     showOpened: true,
     showDelayed: true,
-    showServiceOk: true
+    showServiceOk: true,
+    graphic: undefined,
+    load: false
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -30,7 +32,6 @@ export default (state = DEFAULT_STATE, action) => {
             _new.services = _new.services || [];
             return {...state, list: [...state.list, _new], employeeSaved: true};
         case "ADD_EMPLOYEE_REJECTED":
-            console.log("ERROR", action);
             return state;
         case "ADD_SERVICE_FULFILLED":
             return {...state, serviceAdded: true};
@@ -51,7 +52,6 @@ export default (state = DEFAULT_STATE, action) => {
                 return {...state, delay: false}
             }
         case "FILTER_SITUATION":
-            console.log(action.payload)
             if (action.payload === "opened"){
                 return {...state, showOpened: true, showDelayed: false, showServiceOk: false}
             } else if (action.payload === "delayed"){
@@ -61,6 +61,8 @@ export default (state = DEFAULT_STATE, action) => {
             } else {
                 return {...state, showOpened: true, showDelayed: true, showServiceOk: true}
             }
+        case "GRAPHIC_FULFILLED":
+            return {...state, graphic: action.payload.data, load: true};
         case "ALTER_SERVICE_FULFILLED":
             return state;
         default:
