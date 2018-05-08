@@ -8,6 +8,7 @@ import checkService from '../config/images/checkService.png';
 import warningService from '../config/images/warningService.png';
 import doneService from '../config/images/doneService.png';
 import addNewService from '../config/images/add_new_service.jpg';
+import statistic from '../config/images/statistic.png';
 
 class Filter extends Component {
     render() {
@@ -15,10 +16,10 @@ class Filter extends Component {
         return (
             <div className="container row">
                 <div className="col-sm">
-                    <button onClick={() => {
+                    <img src={statistic} className="imgG" alt="" onClick={() => {
                         this.props.graphicServices(this.props.thisEmployee._id).then(() => this.props.redirect('/graphic'));
-                    }}>Estatísticas do {this.props.thisEmployee.name}
-                    </button>
+                    }}/>
+                    <span className="span spanC">Estatísticas</span>
                 </div>
                 <div align="center" className="dropdown col-sm">
                     <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -40,7 +41,7 @@ class Filter extends Component {
                     </div>
                 </div>
                 <div align="right" className="col-sm align-self-end">
-                    <img src={addNewService} className="imgP" alt=""
+                    <img src={addNewService} className="imgG" alt=""
                          onClick={() => {
                              this.props.saveEmployeeForAddService(this.props.thisEmployee);
                              this.props.redirect('./registerservice')
