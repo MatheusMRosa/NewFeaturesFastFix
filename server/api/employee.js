@@ -72,15 +72,26 @@ app.post("/:id/:idservice", (req, res) => {
 });
 
 app.get("/:id/graphic", (req, res) => {
-    employee.findById(req.params.id, (err, employee) => {
-        employee.services.collection.aggregate(
-            [
-               {opened : {done: true}}
-            ]
-        , (err, data) => {
-            console.log(err)
-            console.log("Dados:::",data)
-        })
+    employee.findById(req.params.id, (err, data) => {
+        if (err) {
+            return res.sendStatus(500)
+        }
+        let result = data.services.reduce((values, current) => {
+            if (!current.done) {
+                values['opened']++
+            } else if (current.delayed) {
+                values['delayed']++
+            } else {
+                values['ok']++
+            }
+            return values
+        }, {
+                'opened': 0,
+                'ok': 0,
+                'delayed': 0
+            }
+        )
+        return res.json(result)
     });
 });
 
