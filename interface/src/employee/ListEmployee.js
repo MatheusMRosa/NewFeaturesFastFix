@@ -4,6 +4,7 @@ import { push } from "react-router-redux";
 import { fetchEmployee } from './actionsEmployee';
 import ServicesList from './servicesList';
 import FilterSituationService from './FilterSituationService';
+import ShowItens from './showItens';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
@@ -52,6 +53,7 @@ class ListEmployee extends Component {
                                         <td colSpan={3}>
                                             <FilterSituationService thisEmployee={employee}/>
                                             <ServicesList thisEmployee={employee}/>
+                                            <ShowItens thisEmployee={employee}/>
                                         </td>
                                     </tr>
                                 </tbody>

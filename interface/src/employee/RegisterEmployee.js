@@ -31,10 +31,11 @@ class RegisterEmployee extends Component {
         const {handleSubmit, newEmployee, submitting} = this.props;
         const submit = (values) => {
             newEmployee(values);
-            this.props.redirect('/list')
+            this.props.redirect('/')
+            window.location.reload()
         };
         return (
-            <div className="container card" style={{marginTop: 200, width: 500, height: 500}}>
+            <div className="container card" style={{marginTop: 100, width: 500, height: 500}}>
                 <h3 className="card-title">Novo Funcionário</h3>
                 <img src={newEmployeeIcon} alt="New Employee"/>
                 <div style={{marginTop: 20}}><Field component={renderField}
