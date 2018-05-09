@@ -6,18 +6,24 @@ import RegisterService from './employee/RegisterService';
 import HomePageList from './employee/HomePageList';
 import GraphicService from './employee/graphicServiceByEmployee';
 import ForbiddenUser from './login/UserForbidden';
+import SideMenuBar from './config/sideMenuBar';
 import {verifySession} from './login/actionsLogin';
 import {Route} from 'react-router';
 import {connect} from 'react-redux';
 
 class App extends Component {
     componentDidMount() {
-      this.props.verifySession()
-     }
-     
+        this.props.verifySession()
+    }
+
     render() {
         return (
             <div className="App">
+                {this.props.logged ?
+                    <SideMenuBar/>
+                    :
+                    ""
+                }
                 <Route exact path="/" component={LoginUser}/>
                 <Route path="/register" component={RegisterEmployee}/>
                 <Route path="/list" component={HomePageList}/>

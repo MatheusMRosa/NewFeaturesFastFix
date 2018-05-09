@@ -12,9 +12,9 @@ import iconUser from '../config/images/iconUser.png'
 const validate = values => {
     const errors = {};
     if (!values.user) {
-        errors.user = 'Campo Obrigatório, Por Favor insira seu Usuário';
+        errors.user = 'Por Favor insira um Usuário';
     } else if (!values.pass) {
-        errors.pass = 'Campo Obrigatório, Por Favor insira sua Senha';
+        errors.pass = 'Por Favor insira uma Senha';
     }
     return errors
 };

@@ -29,9 +29,9 @@ class GraphicService extends Component {
 
     render() {
         return (
-            <div>
-                <div id="chart"/>
-                <button onClick={() => this.props.redirect('/')}>Voltar a tela Principal</button>
+            <div className="container" align="center" style={{marginTop: 175}}>
+                <div id="chart" style={{width: 500, height: 500}}/>
+                <button onClick={() => this.props.redirect('/')} className="btn btn-outline-dark" style={{marginTop: 50}}>Voltar a tela Principal</button>
             </div>
         )
     }
