@@ -33,7 +33,7 @@ export default (state = DEFAULT_STATE, action) => {
             }
             return state;
         case "VERIFY_SESSION_FULFILLED":
-                return {...state, logged: true}
+                return {...state, logged: true};
         default:
             return state;
     }
