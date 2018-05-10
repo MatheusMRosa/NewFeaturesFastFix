@@ -17,3 +17,10 @@ export const verifySession = () => {
         payload: axios.get(URL)
     });
 };
+
+export const logout = () => {
+    return ({
+        type: "LOGOUT",
+        payload: axios.get(URL + '/finish')
+    })
+};

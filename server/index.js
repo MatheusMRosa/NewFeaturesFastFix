@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const FileStore = require('session-file-store')(session);
+// const FileStore = require('session-file-store')(session);
 const user = require('./api/user');
 const employee = require('./api/employee');
 const login = require('./api/login');
@@ -11,7 +11,6 @@ const app = express();
 
 
 app.use(session({
-
     //store: new FileStore({path: '/tmp/sessions'}),
     secret: 'keyboard cat',
     resave: false,
@@ -37,7 +36,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 const auth = (req, res, next) => {
-
     if (req.session && req.session.user) {
         return next();
     }

@@ -12,8 +12,9 @@ import '../config/CSS/serviceList.css';
 
 let textDelay = undefined;
 
-const DescriptionService = ({descService}) => <div className="text-left col-10 col-md-5">Descrição do Serviço: {descService}</div>;
-const DescriptionEstimate = ({estimate}) => <div className="col-md-4">Estimativa de Tempo: {estimate} hrs</div>;
+const DescriptionService = ({descService}) => <div className="text-left col-10 col-md-5">Descrição do
+    Serviço: {descService}</div>;
+const DescriptionEstimate = ({estimateHours, estimateMinutes}) => <div className="col-md-4">Estimativa de Tempo: {estimateHours}:{estimateMinutes} hrs</div>;
 
 class ServicesList extends Component {
     render() {
@@ -27,7 +28,7 @@ class ServicesList extends Component {
                                 <DescriptionEstimate {...service}/>
                                 <div align="right" className="col align-self-end">
                                     <img src={doneService} className="imgP" data-toggle="modal"
-                                            data-target={"#" + service._id} alt=""/>
+                                         data-target={"#" + service._id} alt=""/>
                                     <span className="span spanA font-weight-bold">Finalizar Serviço</span>
                                 </div>
                             </div>
@@ -39,7 +40,7 @@ class ServicesList extends Component {
                                         <img src={warningService} alt="" className="imgC"/>
                                     </div>
                                 </div>
-                                :service.done && (!service.delayed) && this.props.showServiceOk ?
+                                : service.done && (!service.delayed) && this.props.showServiceOk ?
                                     <div className="row container" style={{paddingTop: "20px"}}>
                                         <DescriptionService {...service}/>
                                         <DescriptionEstimate {...service}/>
@@ -65,14 +66,13 @@ class ServicesList extends Component {
                                     <div className="modal-body">
                                         <div>Tempo Gasto: <input type="time" onChange={(time) => {
                                             let times = time.target.value.split(":");
-                                            let estimates = service.estimate.split(":");
-                                            if (parseInt(times[0] * 60 + times[1], 0) - parseInt(estimates[0] * 60 + estimates[1], 0) > 0) {
+                                            if (parseInt(times[0] * 60 + times[1], 0) - parseInt(service.estimateMinutes * 60 + service.estimateHours, 0) > 0) {
                                                 this.props.employeeDelay(true)
                                             } else {
                                                 this.props.employeeDelay(false)
                                             }
 
-                                        }}/></div>
+                                        }} /></div>
                                         {this.props.delay ?
                                             <div className="form-group" align="left">
                                                 <label htmlFor="comment">Motivo do Atraso</label>

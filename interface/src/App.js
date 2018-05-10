@@ -6,7 +6,7 @@ import RegisterService from './employee/RegisterService';
 import HomePageList from './employee/HomePageList';
 import GraphicService from './employee/graphicServiceByEmployee';
 import ForbiddenUser from './login/UserForbidden';
-import SideMenuBar from './config/sideMenuBar';
+import SideMenuBar from './config/SideMenuBar';
 import {verifySession} from './login/actionsLogin';
 import {Route} from 'react-router';
 import {connect} from 'react-redux';

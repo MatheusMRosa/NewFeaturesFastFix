@@ -11,12 +11,10 @@ const DEFAULT_STATE = {
     employeeSaved: false,
     serviceAdded: false,
     delay: false,
-    situation: '',
     showOpened: true,
     showDelayed: true,
     showServiceOk: true,
-    graphic: undefined,
-    load: false
+    graphic: undefined
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -62,7 +60,7 @@ export default (state = DEFAULT_STATE, action) => {
                 return {...state, showOpened: true, showDelayed: true, showServiceOk: true}
             }
         case "GRAPHIC_FULFILLED":
-            return {...state, graphic: action.payload.data, load: true};
+            return {...state, graphic: action.payload.data};
         case "ALTER_SERVICE_FULFILLED":
             return state;
         default:

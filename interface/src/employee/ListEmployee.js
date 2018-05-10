@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { push } from "react-router-redux";
-import { fetchEmployee } from './actionsEmployee';
-import ServicesList from './servicesList';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {push} from "react-router-redux";
+import {fetchEmployee} from './actionsEmployee';
+import ServicesList from './ServicesList';
 import FilterSituationService from './FilterSituationService';
-import ShowItens from './showItens';
+import ShowItens from './ShowItens';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
 import '../config/CSS/listEmployee.css';
 import '../config/CSS/serviceList.css';
+import '../config/CSS/serviceList.css';
+import addEmployee from '../config/images/addEmployee.png';
 
-const Registered = ({ name }) => <td className="text-left col-lg-12">{name}</td>;
+const Registered = ({name}) => <td colSpan={3} className="text-left col-lg-12">{name}</td>;
 
 class ListEmployee extends Component {
 
@@ -35,9 +37,15 @@ class ListEmployee extends Component {
             <div className="container divTable">
                 <table className="table table-hover" id="accordion">
                     <thead className="thead-light">
-                        <tr>
-                            <th colSpan={3}>Nome do Funcionário</th>
-                        </tr>
+                    <tr>
+                        <th colSpan={2}>Nome do Funcionário</th>
+                        <th>
+                            <div align="right" style={{marginRight: 20}}>
+                                <img src={addEmployee} alt="" className="imgADD imgP"
+                                                    onClick={() => this.props.redirect('/register')}/>
+                            </div>
+                        </th>
+                    </tr>
                     </thead>
                     {this.props.employees.map(
                         (employee, index) => {
@@ -45,17 +53,17 @@ class ListEmployee extends Component {
                                 employee.services = [];
                             return (
                                 <tbody key={index}>
-                                    <tr data-toggle="collapse"
-                                        data-target={"#" + employee._id}>
-                                        <Registered {...employee} />
-                                    </tr>
-                                    <tr id={employee._id} className="collapse" data-parent="#accordion">
-                                        <td colSpan={3}>
-                                            <FilterSituationService thisEmployee={employee}/>
-                                            <ServicesList thisEmployee={employee}/>
-                                            <ShowItens thisEmployee={employee}/>
-                                        </td>
-                                    </tr>
+                                <tr data-toggle="collapse"
+                                    data-target={"#" + employee._id}>
+                                    <Registered {...employee} />
+                                </tr>
+                                <tr id={employee._id} className="collapse" data-parent="#accordion">
+                                    <td colSpan={3}>
+                                        <FilterSituationService thisEmployee={employee}/>
+                                        <ServicesList thisEmployee={employee}/>
+                                        <ShowItens thisEmployee={employee}/>
+                                    </td>
+                                </tr>
                                 </tbody>
                             )
                         })}

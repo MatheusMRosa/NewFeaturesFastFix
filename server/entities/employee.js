@@ -7,7 +7,8 @@ const employee = new schema({
         {
             descService: {type: 'String'},
             time: {type: Date, default: Date.now},
-            estimate: {type: 'String'},
+            estimateHours: {type: 'Number'},
+            estimateMinutes: {type: 'Number'},
             done: {type: 'Boolean'},
             delay: {type: 'String'},
             delayed: {type: 'Boolean'}

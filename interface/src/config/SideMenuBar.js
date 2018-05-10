@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {push} from "react-router-redux";
 import {connect} from "react-redux";
+import {logout} from '../login/actionsLogin';
 import '../../node_modules/glyphicons-only-bootstrap/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
@@ -17,18 +18,22 @@ class SideMenuBar extends Component {
                 <nav className="main-menu">
                     <ul>
                         <li>
-                            <a onClick={() => this.props.redirect('/')}><i className="fa fa-home fa-2x"/><span className="nav-text">Página Principal</span></a>
+                            <a onClick={() => this.props.redirect('/')}><i className="fa fa-home fa-2x"/><span
+                                className="nav-text">Página Principal</span></a>
                         </li>
                         <li className="has-subnav">
                             <a onClick={() => this.props.redirect('/register')}>
-                                <i className="fa fa-address-card fa-2x"/><span className="nav-text">Novo Funcionário</span>
+                                <i className="fa fa-address-card fa-2x"/><span
+                                className="nav-text">Novo Funcionário</span>
                             </a>
-
                         </li>
                     </ul>
                     <ul className="logout">
                         <li>
-                            <a onClick={() => console.log("Todo implement the method logout")}>
+                            <a onClick={() => {
+                                this.props.logout();
+                                window.location.reload();
+                            }}>
                                 <i className="fa fa-power-off fa-2x"/><span className="nav-text">Logout</span>
                             </a>
                         </li>
@@ -42,6 +47,7 @@ class SideMenuBar extends Component {
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = ({
+    logout: logout,
     redirect: push
 });
 

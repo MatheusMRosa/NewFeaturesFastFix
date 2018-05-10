@@ -43,5 +43,10 @@ app.post("", (req, res) => {
 
 });
 
+app.get("/finish", (req, res) => {
+    req.session.destroy();
+    return res.sendStatus(200)
+});
+
 
 module.exports = app;

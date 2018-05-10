@@ -32,15 +32,15 @@
 .spanA {
     bottom: 15px;
     text-align: left;
-    color: darkred;
+    color: #2196F3;
 }
 .spanB {
     bottom: 15px;
     text-align: left;
-    color: seagreen;
+    color: #00B895;
 }
 .spanC {
     bottom: 20px;
     text-align: left;
-    color: cornflowerblue;
+    color: orangered;
 }

@@ -26,14 +26,16 @@ export default (state = DEFAULT_STATE, action) => {
             return {...state, logged: false};
         case "VERIFY_USER_REJECTED":
             let validateStatus = action.payload.response.status;
-            if (validateStatus === 403){
+            if (validateStatus === 403) {
                 return {...state, error: "403"}
             } else {
                 console.log("Problems with Login");
             }
             return state;
         case "VERIFY_SESSION_FULFILLED":
-                return {...state, logged: true};
+            return {...state, logged: true};
+        case "LOGOUT_FULFILLED":
+            return {...state, logged: false};
         default:
             return state;
     }
