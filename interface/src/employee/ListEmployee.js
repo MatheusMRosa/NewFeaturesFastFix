@@ -10,7 +10,6 @@ import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
 import '../config/CSS/listEmployee.css';
 import '../config/CSS/serviceList.css';
-import '../config/CSS/serviceList.css';
 import addEmployee from '../config/images/addEmployee.png';
 
 const Registered = ({name}) => <td colSpan={3} className="text-left col-lg-12">{name}</td>;
@@ -35,10 +34,10 @@ class ListEmployee extends Component {
     render() {
         return (
             <div className="container divTable">
-                <table className="table table-hover" id="accordion">
-                    <thead className="thead-light">
+                <table className="table table-hover table-light" id="accordion">
+                    <thead className="thead-dark table-primary">
                     <tr>
-                        <th colSpan={2}>Nome do Funcionário</th>
+                        <th colSpan={3} className="text-center">Nome do Funcionário</th>
                         <th>
                             <div align="right" style={{marginRight: 20}}>
                                 <img src={addEmployee} alt="" className="imgADD imgP"
@@ -55,10 +54,11 @@ class ListEmployee extends Component {
                                 <tbody key={index}>
                                 <tr data-toggle="collapse"
                                     data-target={"#" + employee._id}>
-                                    <Registered {...employee} />
+                                    <Registered {...employee}/>
+                                    <td><i className="fa fa fa-caret-down fa-2x" style={{color: 'black'}}/></td>
                                 </tr>
                                 <tr id={employee._id} className="collapse" data-parent="#accordion">
-                                    <td colSpan={3}>
+                                    <td colSpan={4}>
                                         <FilterSituationService thisEmployee={employee}/>
                                         <ServicesList thisEmployee={employee}/>
                                         <ShowItens thisEmployee={employee}/>

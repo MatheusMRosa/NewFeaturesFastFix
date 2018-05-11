@@ -6,7 +6,7 @@ import '../config/CSS/filter.css'
 const Filter = props => {
     const {filterValue, filter} = props;
     return (
-        <div align="center">
+        <div align="center" style={{marginTop: 100}}>
             <input value={filterValue} placeholder="Procurar..." type="text" name="name" onChange={filter} className="inputEmloyee form-control"/>
         </div>
     )

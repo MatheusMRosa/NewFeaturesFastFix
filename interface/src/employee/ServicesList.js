@@ -11,10 +11,13 @@ import doneService from '../config/images/doneService.png';
 import '../config/CSS/serviceList.css';
 
 let textDelay = undefined;
+let timeHour = 0;
+let timeMinute = 0;
 
 const DescriptionService = ({descService}) => <div className="text-left col-10 col-md-5">Descrição do
     Serviço: {descService}</div>;
-const DescriptionEstimate = ({estimateHours, estimateMinutes}) => <div className="col-md-4">Estimativa de Tempo: {estimateHours}:{estimateMinutes} hrs</div>;
+const DescriptionEstimate = ({estimateHours, estimateMinutes}) => <div className="col-md-4">Estimativa de
+    Tempo: {estimateHours}:{estimateMinutes} hrs</div>;
 
 class ServicesList extends Component {
     render() {
@@ -64,15 +67,17 @@ class ServicesList extends Component {
                                         </button>
                                     </div>
                                     <div className="modal-body">
-                                        <div>Tempo Gasto: <input type="time" onChange={(time) => {
-                                            let times = time.target.value.split(":");
-                                            if (parseInt(times[0] * 60 + times[1], 0) - parseInt(service.estimateMinutes * 60 + service.estimateHours, 0) > 0) {
-                                                this.props.employeeDelay(true)
-                                            } else {
-                                                this.props.employeeDelay(false)
-                                            }
-
-                                        }} /></div>
+                                        <h5 className="row">Tempo Gasto</h5>
+                                        <div className="row">
+                                            <input type="number" onChange={(time) => {
+                                                timeHour = time.target.value;
+                                            }} /> Hrs
+                                        </div>
+                                        <div className="row">
+                                            <input type="number" onChange={(time) => {
+                                                timeMinute = time.target.value;
+                                            }}/> min
+                                        </div>
                                         {this.props.delay ?
                                             <div className="form-group" align="left">
                                                 <label htmlFor="comment">Motivo do Atraso</label>

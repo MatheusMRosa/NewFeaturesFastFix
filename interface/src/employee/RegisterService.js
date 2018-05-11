@@ -9,10 +9,8 @@ const validate = values => {
     const errors = {};
     if (!values.descService) {
         errors.descService = 'Por Favor insira uma breve descrição sobre o Serviço';
-    } else if (!values.estimateHours) {
+    } else if (!values.estimateHours || !values.estimateMinutes) {
         errors.estimateHours = 'Por Favor informe um horário'
-    } else if (!values.estimateMinutes) {
-        errors.estimateMinutes = 'Por Favor informe um horário'
     } else if (values.estimateHours < 0) {
         errors.estimateHours = 'Por Favor insira um número positivo'
     } else if (values.estimateMinutes < 0) {
@@ -48,13 +46,18 @@ class RegisterService extends Component {
 
         const {handleSubmit, addServiceInEmployee, submitting} = this.props;
         const submit = (values) => {
+            if (!values.estimateHours){
+                values.estimateHours = 0
+            } else if (!values.estimateMinutes) {
+                values.estimateMinutes = 0
+            }
             addServiceInEmployee(this.props.employeeSelected, values);
             window.location.reload();
         };
         return (
             <div align="center">
                 {this.props.employeeSelected ?
-                    <div className="container card" style={{marginTop: 100, width: 700, height: 700}}>
+                    <div className="container card" style={{marginTop: 100, width: 500, height: 500}}>
                         <h5 className="card-title" style={{marginTop: 20}}>Novo serviço para o
                             funcionário {this.props.employeeSelected.name}</h5>
                         <Field component={renderField}
@@ -66,25 +69,30 @@ class RegisterService extends Component {
                                 <div style={{marginTop: 20}}>Horário Atual:</div>
                                 <div style={{marginTop: 20}}><Clock format={'HH:mm:ss'} ticking={true}/></div>
                             </div>
-                            <div>Estimatima de conclusão:</div>
+                            <div style={{marginTop: 20}}>Estimatima de conclusão:</div>
                             <div className="row">
-                                <div style={{marginTop: 20}} >Horas: </div>
+                                <div style={{marginTop: 20}}>Horas:</div>
                                 <Field component={renderField}
                                        placeholder="Tempo estimado"
                                        type="number"
                                        name="estimateHours"/>
                             </div>
                             <div className="row">
-                                <div style={{marginTop: 20}}>Minutos: </div>
+                                <div style={{marginTop: 20}}>Minutos:</div>
                                 <Field component={renderField}
                                        placeholder="Tempo estimado"
                                        type="number"
                                        name="estimateMinutes"/>
                             </div>
                         </div>
-                        <button disabled={submitting} onClick={handleSubmit(submit)}
-                                className="btn btn-outline-success">Novo Serviço
-                        </button>
+                        <div align="center" className="row">
+                            <button disabled={submitting} onClick={handleSubmit(submit)}
+                                    className="btn btn-outline-success" style={{width: 248, height: 50}}>Novo Serviço
+                            </button>
+                            <button disabled={submitting} onClick={() => this.props.redirect('/')}
+                                    className="btn btn-outline-danger" style={{width: 248, height: 50}}>Cancelar
+                            </button>
+                        </div>
                     </div>
                     :
                     <div/>
