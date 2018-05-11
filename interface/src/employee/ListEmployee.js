@@ -55,7 +55,7 @@ class ListEmployee extends Component {
                                 <tr data-toggle="collapse"
                                     data-target={"#" + employee._id}>
                                     <Registered {...employee}/>
-                                    <td><i className="fa fa fa-caret-down fa-2x" style={{color: 'black'}}/></td>
+                                    <td><i className="fa fa-caret-down fa-2x" style={{color: 'black'}}/></td>
                                 </tr>
                                 <tr id={employee._id} className="collapse" data-parent="#accordion">
                                     <td colSpan={4}>

@@ -30,7 +30,7 @@ class GraphicService extends Component {
     render() {
         return (
             <div className="container card" align="center" style={{marginTop: 50}}>
-                <div id="chart" style={{width: 500, height: 500}} className="card-body"/>
+                <div id="chart" style={{width: 500, height: 500, padding: '25%'}} className="card-body"/>
                 <button onClick={() => this.props.redirect('/')} className="btn btn-outline-dark card-body" style={{marginTop: 50}}>Voltar a tela Principal</button>
             </div>
         )

@@ -4,8 +4,10 @@ ul, ol {margin: 0;}
 p {margin: 0;}
 .html, .body{
     font-family: 'Open Sans', sans-serif;
-    background: transparent url('../images/logo.jpg') fixed center;
+    background: white url('../images/logo.jpg') fixed center;
+    background-repeat: no-repeat;
     background-size: cover;
+    height: 100%; 
     margin:0 0 0 0;
     padding:0;
 }

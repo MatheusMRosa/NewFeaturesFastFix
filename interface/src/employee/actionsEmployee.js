@@ -56,10 +56,10 @@ export const saveEmployeeForAddService = (employee) => {
     });
 };
 
-export const employeeDelay = (delay) => {
+export const calculateDelay = (timeMinuteWritten, timeHourWritten, timeEstimateMinute, timeEstimateHour) => {
     return ({
         type: "DELAY",
-        payload: delay
+        payload: {timeMinuteWritten, timeHourWritten, timeEstimateMinute, timeEstimateHour}
     })
 };
 
