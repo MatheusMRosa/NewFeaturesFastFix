@@ -44,11 +44,8 @@ export default (state = DEFAULT_STATE, action) => {
         case "EMPLOYEE_SELECTED":
             return {...state, employeeSelected: action.payload};
         case "DELAY":
-            console.log(action.payload)
             let estimate = (action.payload.timeEstimateHour * 60) + action.payload.timeEstimateMinute
             let written = (action.payload.timeHourWritten * 60) + action.payload.timeMinuteWritten
-            console.log("estimate", estimate)
-            console.log("written", written)
             if (written - estimate > 0 ){
                 return {...state, delay: true}
             } else {
