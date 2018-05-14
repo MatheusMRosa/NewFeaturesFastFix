@@ -1,35 +1,20 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
+import renderField from './RenderField';
+import validate from './Validate';
 import {connect} from 'react-redux'
-import {verifyLogin, verifySession} from "./actionsLogin";
 import {push} from "react-router-redux";
+import {verifyLogin, verifySession} from "./actionsLogin";
 import '../config/CSS/login.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
-import iconUser from '../config/images/iconUser.png'
-
-const validate = values => {
-    const errors = {};
-    if (!values.user) {
-        errors.user = 'Por Favor insira um Usuário';
-    } else if (!values.pass) {
-        errors.pass = 'Por Favor insira uma Senha';
-    }
-    return errors
-};
-
-const renderField = ({input, label, type, meta: {touched, error}}) => (
-    <div>
-        <input {...input} placeholder={label} type={type}/>
-        {touched && (error && <div className="alert alert-danger" role="alert">{error}</div>)}
-    </div>
-);
+import iconUser from '../config/images/iconUser.png';
 
 class LoginUser extends Component {
 
     componentDidMount() {
-       this.props.verifySession()
+        this.props.verifySession()
     }
 
     componentDidUpdate() {
@@ -53,7 +38,8 @@ class LoginUser extends Component {
                                 <div className="view view-tenth">
                                     <div className="inner_content clearfix">
                                         <div className="product_image">
-                                            <img src={iconUser} className="img-responsive" alt="" style={{marginLeft: "4%"}}/>
+                                            <img src={iconUser} className="img-responsive" alt=""
+                                                 style={{marginLeft: "4%"}}/>
                                         </div>
                                         <div className="mask">
                                             <h2 style={{color: "black"}}>Bem-Vindo Usuário</h2>
@@ -73,7 +59,10 @@ class LoginUser extends Component {
                                                                                    disabled={submitting}
                                                                                    onClick={handleSubmit(submit)}
                                                                                    value="Login"/></div>
-                                                    {this.props.forbidden? <div className="alert alert-danger">Error</div>: null}
+                                                    {this.props.forbidden ?
+                                                        <div className="alert alert-danger">Usuário ou Senha Incorretos</div>
+                                                        :
+                                                        null}
                                                     <div className="clearfix"/>
                                                 </form>
                                             </div>

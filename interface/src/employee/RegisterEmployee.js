@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {newEmployee} from './actionsEmployee';
+import renderField from './RenderField';
 import {push} from "react-router-redux";
 import {connect} from 'react-redux'
 import newEmployeeIcon from '../config/images/newEmployee.png';
@@ -12,13 +13,6 @@ const validate = values => {
     }
     return errors
 };
-
-const renderField = ({input, label, type, meta: {touched, error}}) => (
-    <div>
-        <input {...input} placeholder={label} type={type} className="form-control"/>
-        {touched && (error && <div className="alert alert-danger" role="alert">{error}</div>)}
-    </div>
-);
 
 class RegisterEmployee extends Component {
     componentDidUpdate() {

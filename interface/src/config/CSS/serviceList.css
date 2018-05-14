@@ -44,3 +44,15 @@
     text-align: left;
     color: orangered;
 }
+.spanD {
+    bottom: 20px;
+    text-align: left;
+    color: orange;
+}
+.sizeContainer {
+    padding: 15px;
+}
+
+.imgPointer {
+    cursor: pointer;
+}

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {push} from "react-router-redux";
 import {filterSituationService, saveEmployeeForAddService, graphicServices} from "./actionsEmployee";
-import '../config/CSS/filter.css';
+import '../config/CSS/filters.css';
 import '../config/CSS/serviceList.css';
 import checkService from '../config/images/checkService.png';
 import warningService from '../config/images/warningService.png';
@@ -16,7 +16,7 @@ class Filter extends Component {
         return (
             <div className="container row">
                 <div className="col-sm">
-                    <img src={statistic} className="imgG" alt="" onClick={() => {
+                    <img src={statistic} className="imgG imgPointer" alt="" onClick={() => {
                         this.props.graphicServices(this.props.thisEmployee._id).then(() => this.props.redirect('/graphic'));
                     }}/>
                     <span className="span spanC">Estatísticas</span>
@@ -41,7 +41,7 @@ class Filter extends Component {
                     </div>
                 </div>
                 <div align="right" className="col-sm align-self-end">
-                    <img src={addNewService} className="imgG" alt=""
+                    <img src={addNewService} className="imgG imgPointer" alt=""
                          onClick={() => {
                              this.props.saveEmployeeForAddService(this.props.thisEmployee);
                              this.props.redirect('./registerservice')

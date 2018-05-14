@@ -4,14 +4,14 @@ import {graphicServices} from './actionsEmployee';
 import '../config/CSS/sideBar.css';
 import '../../node_modules/font-awesome-animation/dist/font-awesome-animation.min.css';
 
-class ShowItens extends Component {
+class ShowItems extends Component {
     render() {
         return (
             <div align="right" className="dropdown col-sm">
                 <a onClick={() => this.props.graphicServices(this.props.thisEmployee._id)} className=""
                    id={"#" + this.props.thisEmployee._id}
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i className="fa fa-info-circle fa-2x faa-parent animated-hover faa-pulse"
+                    <i className="fa fa-info-circle fa-2x faa-parent animated-hover faa-pulse imgPointer"
                        style={{color: "black", margin: 13}}/>
                 </a>
                 {this.props.graphic ?
@@ -43,4 +43,4 @@ const mapDispatchToProps = {
     graphicServices: graphicServices
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShowItens);
+export default connect(mapStateToProps, mapDispatchToProps)(ShowItems);

@@ -4,7 +4,7 @@ import {push} from "react-router-redux";
 import {fetchEmployee} from './actionsEmployee';
 import ServicesList from './ServicesList';
 import FilterSituationService from './FilterSituationService';
-import ShowItens from './ShowItens';
+import ShowItems from './ShowItems';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
@@ -40,7 +40,7 @@ class ListEmployee extends Component {
                         <th colSpan={3} className="text-center">Nome do Funcionário</th>
                         <th>
                             <div align="right" style={{marginRight: 20}}>
-                                <img src={addEmployee} alt="" className="imgADD imgP"
+                                <img src={addEmployee} alt="" className="imgADD imgP imgPointer"
                                                     onClick={() => this.props.redirect('/register')}/>
                             </div>
                         </th>
@@ -53,7 +53,7 @@ class ListEmployee extends Component {
                             return (
                                 <tbody key={index}>
                                 <tr data-toggle="collapse"
-                                    data-target={"#" + employee._id}>
+                                    data-target={"#" + employee._id} className="imgPointer">
                                     <Registered {...employee}/>
                                     <td><i className="fa fa-caret-down fa-2x" style={{color: 'black'}}/></td>
                                 </tr>
@@ -61,7 +61,7 @@ class ListEmployee extends Component {
                                     <td colSpan={4}>
                                         <FilterSituationService thisEmployee={employee}/>
                                         <ServicesList thisEmployee={employee}/>
-                                        <ShowItens thisEmployee={employee}/>
+                                        <ShowItems thisEmployee={employee}/>
                                     </td>
                                 </tr>
                                 </tbody>

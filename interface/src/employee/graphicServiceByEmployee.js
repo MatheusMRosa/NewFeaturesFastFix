@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from "react-router-redux";
 import c3 from "c3";
+import '../config/CSS/graphics.css';
 
 
 class GraphicService extends Component {
@@ -29,9 +30,9 @@ class GraphicService extends Component {
 
     render() {
         return (
-            <div className="container card" align="center" style={{marginTop: 50}}>
-                <div id="chart" style={{width: 500, height: 500, padding: '25%'}} className="card-body"/>
-                <button onClick={() => this.props.redirect('/')} className="btn btn-outline-dark card-body" style={{marginTop: 50}}>Voltar a tela Principal</button>
+            <div className="container card cardMargin" align="center">
+                <div id="chart" className="card-body graphicSize"/>
+                <button onClick={() => this.props.redirect('/')} className="btn btn-outline-dark card-body cardMargin alignSELF">Voltar a tela Principal</button>
             </div>
         )
     }

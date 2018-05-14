@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {filterEmployee} from "./actionsEmployee";
-import '../config/CSS/filter.css'
+import '../config/CSS/filters.css'
 
 const Filter = props => {
     const {filterValue, filter} = props;
     return (
-        <div align="center" style={{marginTop: 100}}>
+        <div align="center" className="marginTOP">
             <input value={filterValue} placeholder="Procurar..." type="text" name="name" onChange={filter} className="inputEmloyee form-control"/>
         </div>
     )
