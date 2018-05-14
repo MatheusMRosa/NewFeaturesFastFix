@@ -35,7 +35,9 @@ class ServicesList extends Component {
                                     <DescriptionService {...service} />
                                     <DescriptionEstimate {...service} />
                                     <div align="right" className="col align-self-end dropdown">
-                                        <img src={warningService} alt="" className="imgC imgP dropdown-toggle imgPointer" id={service._id} data-toggle="dropdown" aria-haspopup="true"/>
+                                        <img src={warningService} alt=""
+                                             className="imgC imgP dropdown-toggle imgPointer" id={service._id}
+                                             data-toggle="dropdown" aria-haspopup="true"/>
                                         <div className="dropdown">
                                             <div className="dropdown-menu" aria-labelledby={service._id}>
                                                 <div className="dropdown-item">Motivo do Atraso</div>
@@ -45,16 +47,14 @@ class ServicesList extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                : service.done && (!service.delayed) && this.props.showServiceOk ?
-                                    <div className="row container sizeContainer">
-                                        <DescriptionService {...service} />
-                                        <DescriptionEstimate {...service} />
-                                        <div align="right" className="col align-self-end">
-                                            <img src={checkService} alt="" className="imgC"/>
-                                        </div>
+                                :
+                                <div className="row container sizeContainer">
+                                    <DescriptionService {...service} />
+                                    <DescriptionEstimate {...service} />
+                                    <div align="right" className="col align-self-end">
+                                        <img src={checkService} alt="" className="imgC"/>
                                     </div>
-                                    :
-                                    <div/>
+                                </div>
                         }
                         <div className="modal fade" id={service._id} tabIndex="-1" role="dialog"
                              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

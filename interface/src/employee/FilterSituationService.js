@@ -12,12 +12,12 @@ import statistic from '../config/images/statistic.png';
 
 class Filter extends Component {
     render() {
-        const {filter} = this.props;
+        const {filter, thisEmployee} = this.props;
         return (
             <div className="container row">
                 <div className="col-sm">
                     <img src={statistic} className="imgG imgPointer" alt="" onClick={() => {
-                        this.props.graphicServices(this.props.thisEmployee._id).then(() => this.props.redirect('/graphic'));
+                        this.props.graphicServices(thisEmployee._id).then(() => this.props.redirect('/graphic'));
                     }}/>
                     <span className="span spanC">Estatísticas</span>
                 </div>
@@ -27,17 +27,17 @@ class Filter extends Component {
                         Filtrar Por Situação do Serviço
                     </button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <button className="dropdown-item" onClick={() => filter("ServiceOk")}><img
+                        <button className="dropdown-item" onClick={() => filter("serviceOk",thisEmployee._id)}><img
                             src={checkService} alt="" className="imgC"/> Serviços em dia
                         </button>
-                        <button className="dropdown-item" onClick={() => filter("opened")}><img
+                        <button className="dropdown-item" onClick={() => filter("opened",thisEmployee._id)}><img
                             src={doneService} alt="" className="imgC"/> Serviços em aberto
                         </button>
-                        <button className="dropdown-item" onClick={() => filter("delayed")}><img
+                        <button className="dropdown-item" onClick={() => filter("delayed",thisEmployee._id)}><img
                             src={warningService} alt="" className="imgC"/> Serviços com atraso
                         </button>
                         <div className="dropdown-divider"/>
-                        <button className="dropdown-item" onClick={() => filter("clean")}>Limpar Filtros</button>
+                        <button className="dropdown-item" onClick={() => filter("clean",thisEmployee._id)}>Limpar Filtros</button>
                     </div>
                 </div>
                 <div align="right" className="col-sm align-self-end">

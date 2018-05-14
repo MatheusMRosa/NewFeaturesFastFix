@@ -46,21 +46,40 @@ export default (state = DEFAULT_STATE, action) => {
         case "DELAY":
             let estimate = (action.payload.timeEstimateHour * 60) + action.payload.timeEstimateMinute;
             let written = (action.payload.timeHourWritten * 60) + action.payload.timeMinuteWritten;
-            if (written - estimate > 0 ){
+            if (written - estimate > 0) {
                 return {...state, delay: true}
             } else {
                 return {...state, delay: false}
             }
         case "FILTER_SITUATION":
-            if (action.payload === "opened"){
-                return {...state, showOpened: true, showDelayed: false, showServiceOk: false}
-            } else if (action.payload === "delayed"){
-                return {...state, showOpened: false, showDelayed: true, showServiceOk: false}
-            } else if (action.payload === "ServiceOk"){
-                return {...state, showOpened: false, showDelayed: false, showServiceOk: true}
-            } else {
-                return {...state, showOpened: true, showDelayed: true, showServiceOk: true}
-            }
+            let employee = state.list.action.payload.id;
+            return {
+                ...state, filteredList: employee.filter((item) => {
+                    if (action.payload.situation === "opened") {
+                        return !item.done
+                    } else if (action.payload.situation === "delayed") {
+                        if (item.done && item.delayed) {
+                            return item
+                        }
+                    } else if (action.payload.situation === "serviceOk") {
+                        if (item.done && !item.delayed) {
+                            return item
+                        }
+                    } else {
+                        return item
+                    }
+                    return !action.payload
+                })
+            };
+        // if (action.payload === "opened"){
+        //     return {...state, showOpened: true, showDelayed: false, showServiceOk: false}
+        // } else if (action.payload === "delayed"){
+        //     return {...state, showOpened: false, showDelayed: true, showServiceOk: false}
+        // } else if (action.payload === "ServiceOk"){
+        //     return {...state, showOpened: false, showDelayed: false, showServiceOk: true}
+        // } else {
+        //     return {...state, showOpened: true, showDelayed: true, showServiceOk: true}
+        // }
         case "GRAPHIC_FULFILLED":
             return {...state, graphic: action.payload.data};
         case "ALTER_SERVICE_FULFILLED":
