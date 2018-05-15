@@ -57,8 +57,10 @@ app.post("/:id/:idservice", (req, res) => {
         for (let i = 0; i < data.services.length; i++) {
             if (String(data.services[i]._id) === req.params.idservice) {
                 data.services[i].done = req.body.done;
-                data.services[i].delay = req.body.delay;
+                data.services[i].reasonDelay = req.body.reasonDelay;
                 data.services[i].delayed = req.body.delayed;
+                data.services[i].timeDoneHours = req.body.timeDoneHours;
+                data.services[i].timeDoneMinutes = req.body.timeDoneMinutes;
             }
         }
         data.markModified('services');
@@ -85,7 +87,7 @@ app.get("/:id/graphic", (req, res) => {
                 values['ok']++
             }
             return values
-        }, {'opened': 0, 'ok': 0, 'delayed': 0});
+        }, {'opened': 0, 'ok': 0, 'delayed': 0, 'name': data.name});
         return res.json(result)
     });
 });

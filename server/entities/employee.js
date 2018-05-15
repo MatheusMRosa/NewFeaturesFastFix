@@ -10,8 +10,10 @@ const employee = new schema({
             estimateHours: {type: 'Number'},
             estimateMinutes: {type: 'Number'},
             done: {type: 'Boolean'},
-            delay: {type: 'String'},
-            delayed: {type: 'Boolean'}
+            reasonDelay: {type: 'String'},
+            delayed: {type: 'Boolean'},
+            timeDoneHours: {type: 'Number'},
+            timeDoneMinutes: {type: 'Number'},
         }
     ]
 });

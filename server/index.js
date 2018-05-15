@@ -51,6 +51,10 @@ app.use('/api/employee', auth, employee);
 app.listen(3030, '0.0.0.0', () => {
 
     console.log('He is alive');
-    mongoose.connect('mongodb://fastfix:fastfix@ds036967.mlab.com:36967/fastfix');
+    mongoose.connect('mongodb://fastfix:fastfix@ds036967.mlab.com:36967/fastfix', (err) => {
+        if (err) {
+            console.log("Failed: ", err)
+        }
+    });
 
 });

@@ -1,0 +1,23 @@
+.imgBack {
+    background: white url('../images/404Back.jpeg') no-repeat center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.margin404 {
+    margin-top: 100px;
+}
+.letter {
+    color: white;
+}
+.letterSize {
+    font-size: 75px;
+}
+.letterSize2 {
+    font-size: 25px;
+}
+.imgSize {
+    margin-top: 50px;
+    width: 500px;
+    height: 300px;
+}

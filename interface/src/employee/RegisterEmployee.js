@@ -25,7 +25,7 @@ class RegisterEmployee extends Component {
         const {handleSubmit, newEmployee, submitting} = this.props;
         const submit = (values) => {
             newEmployee(values);
-            this.props.redirect('/');
+            this.props.redirect('/')
         };
         return (
             <div className="container card" style={{marginTop: 100, width: 500, height: 500}}>

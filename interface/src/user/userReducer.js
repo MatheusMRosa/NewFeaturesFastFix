@@ -3,7 +3,7 @@ const DEFAULT_STATE =
         user: "",
         pass: "",
         logged: false,
-        error: ""
+        error: 0
     }
 ;
 
@@ -25,17 +25,21 @@ export default (state = DEFAULT_STATE, action) => {
             }
             return {...state, logged: false};
         case "VERIFY_USER_REJECTED":
+            if (!action.payload.response){
+                return {...state, error: 404}
+            }
             let validateStatus = action.payload.response.status;
             if (validateStatus === 403) {
-                return {...state, error: "403"}
+                return {...state, error: 403}
             } else {
-                console.log("Problems with Login");
+                return {...state, error: 404}
             }
-            return state;
         case "VERIFY_SESSION_FULFILLED":
             return {...state, logged: true};
         case "LOGOUT_FULFILLED":
             return {...state, logged: false};
+        case "BACK_ERROR":
+            return {...state, error: 0};
         default:
             return state;
     }

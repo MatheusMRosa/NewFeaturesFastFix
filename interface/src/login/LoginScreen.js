@@ -29,6 +29,7 @@ class LoginUser extends Component {
             verifyLogin(values);
         };
         return (
+            <div className="imgOtherBack">
             <div className="main" style={{marginTop: "15%"}} align="center">
                 <div className="col-lg-12">
                     <div className="container">
@@ -59,10 +60,13 @@ class LoginUser extends Component {
                                                                                    disabled={submitting}
                                                                                    onClick={handleSubmit(submit)}
                                                                                    value="Login"/></div>
-                                                    {this.props.forbidden ?
-                                                        <div className="alert alert-danger">Usuário ou Senha Incorretos</div>
-                                                        :
-                                                        null}
+                                                    {this.props.forbidden === 403 ?
+                                                        <div className="alert alert-danger">Usuário ou Senha
+                                                            Incorretos</div>
+                                                        : this.props.forbidden === 404 ?
+                                                            this.props.redirect('/forbidden')
+                                                            :
+                                                            null}
                                                     <div className="clearfix"/>
                                                 </form>
                                             </div>
@@ -75,6 +79,7 @@ class LoginUser extends Component {
                     </div>
                     <div className="col-lg-4"/>
                 </div>
+            </div>
             </div>
         )
     }

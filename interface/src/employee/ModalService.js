@@ -7,8 +7,6 @@ import $ from "jquery";
 import checkService from '../config/images/checkService.png';
 
 const selector = formValueSelector('finishService');
-let textDelay = undefined;
-
 const validate = values => {
     const errors = {};
     if (!values.hours) {
@@ -23,37 +21,48 @@ const validate = values => {
         errors.minutes = 'Por favor altere os minutos para menos de 60min'
     } else if (values.hours === 0 && values.minutes === 0) {
         errors.hours = 'Por favor insira um horário válido'
+    } else if (!values.textDelay) {
+        errors.textDelay = 'Por Favor insira um Motivo de Atraso'
     }
     return errors
 };
 
+const textArea = ({input, meta: {touched, error}}) => (
+    <div>
+        <textarea {...input} className="form-control" rows="5"/>
+        {touched && (error && <div className="alert alert-danger" role="alert">{error}</div>)}
+    </div>
+);
+
+
 class ModalService extends Component {
     render() {
-        const {handleSubmit, submitting} = this.props;
-        const {hours, minutes} = this.props.values;
+        const {handleSubmit, submitting, thisService, thisEmployee, hours} = this.props;
         const submit = values => {
-            if (textDelay) {
-                this.props.alterStatusService(this.props.thisEmployee._id, this.props.thisService._id, {
-                        done: true, delay: textDelay, delayed: true
-                    }
-                );
+            if (this.props.delay) {
+                this.props.alterStatusService(thisEmployee._id, thisService._id, {
+                    done: true,
+                    reasonDelay: values.textDelay,
+                    delayed: true,
+                    timeDoneHours: values.hours,
+                    timeDoneMinutes: values.minutes
+                });
             } else {
-                this.props.alterStatusService(this.props.thisEmployee._id, this.props.thisService._id, {
-                        done: true, delayed: false
-                    }
-                );
+                this.props.alterStatusService(thisEmployee._id, thisService._id, {
+                    done: true, delayed: false, timeDoneHours: values.hours, timeDoneMinutes: values.minutes
+                });
             }
-            $("#" + this.props.thisService._id).modal("hide");
+            $("#" + thisService._id).modal("hide");
             window.location.reload()
         };
         const change = event => {
-            this.props.calculateDelay(parseInt(minutes, 0), parseInt(hours, 0), parseInt(this.props.thisService.estimateMinutes, 0), parseInt(this.props.thisService.estimateHours, 0));
+            this.props.calculateDelay(parseInt(event.target.value, 0), parseInt(hours, 0), parseInt(thisService.estimateMinutes, 0), parseInt(thisService.estimateHours, 0));
         };
         return (
             <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLongTitle">
-                        Finalizar Serviço: {this.props.thisService.descService}
+                        Finalizar Serviço: {thisService.descService}
                     </h5>
                     <button type="button" className="close" data-dismiss="modal"
                             aria-label="Close">
@@ -65,22 +74,18 @@ class ModalService extends Component {
                     <div className="row" style={{padding: "6%"}}>
                         <Field component={renderField}
                                type="number"
-                               name="hours"
-                               onChange={change}/>
+                               name="hours"/>
                         <div style={{padding: 8}}>Horas</div>
                         <Field component={renderField}
                                type="number"
                                name="minutes"
-                               onChange={change}
-                        />
+                               onChange={change}/>
                         <div style={{padding: 8}}>Minutos</div>
                     </div>
                     {this.props.delay ?
                         <div className="form-group" align="left">
                             <label htmlFor="comment">Motivo do Atraso</label>
-                            <textarea className="form-control" rows="5" onChange={(text) => {
-                                textDelay = text.target.value
-                            }}/>
+                            <Field name="textDelay" component={textArea}/>
                         </div>
                         :
                         <img src={checkService} alt="" className="imgC" align="right"/>
@@ -90,7 +95,8 @@ class ModalService extends Component {
                     <button type="button" className="btn btn-secondary"
                             data-dismiss="modal">Cancelar
                     </button>
-                    <button type="button" disabled={submitting} className="btn btn-primary" onClick={handleSubmit(submit)}>Finalizar
+                    <button type="button" disabled={submitting} className="btn btn-primary"
+                            onClick={handleSubmit(submit)}>Finalizar
                     </button>
                 </div>
             </div>
@@ -102,7 +108,7 @@ class ModalService extends Component {
 const mapStateToProps = (state) => {
     return ({
         delay: state.employees.delay,
-        values: selector(state, 'hours', 'minutes'),
+        hours: selector(state, 'hours'),
     });
 };
 

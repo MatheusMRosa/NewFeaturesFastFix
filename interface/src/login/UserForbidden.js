@@ -1,17 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux'
+import {push} from "react-router-redux";
+import {backError} from '../user/actionsUser';
+import image404 from '../config/images/404.png';
 import '../config/CSS/forbiddenUser.css'
 
-const UserForbidden = () => {
-    return (
-        <div className="overlay">
-            < div className="terminal">
-                <h1> Error <span className="errorcode"> 404 </span></h1>
-                <p className="output"> The page you are looking for might have been removed, had its name changed or is temporarily unavailable </p>
-                <p className="output">Please try <a href="#1">this link</a> or <a href="#2">this link</a></p>
-                <p className="output"> Good luck </p>
+class UserForbidden extends Component {
+    render() {
+        return (
+            <div className="imgBack">
+                <div className="margin404">
+                    <div className="letter">
+                        <p className="letterSize"> Ooops!</p>
+                        <p className="letterSize2">Servidor não foi encontrado</p>
+                        <p className="letterSize2">Verifique sua conexão com o servidor</p>
+                    </div>
+                    <div>
+                        <button className="btn btn-light" onClick={() => {
+                            this.props.redirect('/');
+                            this.props.backError()
+                        }}>
+                            Clique para voltar a tela inicial
+                        </button>
+                    </div>
+                    <img src={image404} alt="" className="imgSize"/>
+                </div>
             </div>
-        </div>
-)
-};
+        )
+    }
+}
 
-export default UserForbidden;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = ({
+    backError: backError,
+    redirect: push
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserForbidden);

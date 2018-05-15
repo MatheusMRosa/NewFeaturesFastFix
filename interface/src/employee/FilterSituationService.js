@@ -4,41 +4,41 @@ import {push} from "react-router-redux";
 import {filterSituationService, saveEmployeeForAddService, graphicServices} from "./actionsEmployee";
 import '../config/CSS/filters.css';
 import '../config/CSS/serviceList.css';
-import checkService from '../config/images/checkService.png';
-import warningService from '../config/images/warningService.png';
-import doneService from '../config/images/doneService.png';
+// import checkService from '../config/images/checkService.png';
+// import warningService from '../config/images/warningService.png';
+// import doneService from '../config/images/doneService.png';
 import addNewService from '../config/images/add_new_service.jpg';
 import statistic from '../config/images/statistic.png';
 
 class Filter extends Component {
     render() {
-        const {filter, thisEmployee} = this.props;
+        const {thisEmployee} = this.props;
         return (
             <div className="container row">
                 <div className="col-sm">
                     <img src={statistic} className="imgG imgPointer" alt="" onClick={() => {
-                        this.props.graphicServices(thisEmployee._id).then(() => this.props.redirect('/graphic'));
+                        this.props.graphicServices(thisEmployee._id, thisEmployee.name).then(() => this.props.redirect('/graphic'));
                     }}/>
                     <span className="span spanC">Estatísticas</span>
                 </div>
                 <div align="center" className="dropdown col-sm">
-                    <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Filtrar Por Situação do Serviço
-                    </button>
-                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <button className="dropdown-item" onClick={() => filter("serviceOk",thisEmployee._id)}><img
-                            src={checkService} alt="" className="imgC"/> Serviços em dia
-                        </button>
-                        <button className="dropdown-item" onClick={() => filter("opened",thisEmployee._id)}><img
-                            src={doneService} alt="" className="imgC"/> Serviços em aberto
-                        </button>
-                        <button className="dropdown-item" onClick={() => filter("delayed",thisEmployee._id)}><img
-                            src={warningService} alt="" className="imgC"/> Serviços com atraso
-                        </button>
-                        <div className="dropdown-divider"/>
-                        <button className="dropdown-item" onClick={() => filter("clean",thisEmployee._id)}>Limpar Filtros</button>
-                    </div>
+                    {/*<button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"*/}
+                            {/*data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}
+                        {/*Filtrar Por Situação do Serviço*/}
+                    {/*</button>*/}
+                    {/*<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">*/}
+                        {/*<button className="dropdown-item" onClick={() => filter("serviceOk")}><img*/}
+                            {/*src={checkService} alt="" className="imgC"/> Serviços em dia*/}
+                        {/*</button>*/}
+                        {/*<button className="dropdown-item" onClick={() => filter("opened")}><img*/}
+                            {/*src={doneService} alt="" className="imgC"/> Serviços em aberto*/}
+                        {/*</button>*/}
+                        {/*<button className="dropdown-item" onClick={() => filter("delayed")}><img*/}
+                            {/*src={warningService} alt="" className="imgC"/> Serviços com atraso*/}
+                        {/*</button>*/}
+                        {/*<div className="dropdown-divider"/>*/}
+                        {/*<button className="dropdown-item" onClick={() => filter("clean")}>Limpar Filtros</button>*/}
+                    {/*</div>*/}
                 </div>
                 <div align="right" className="col-sm align-self-end">
                     <img src={addNewService} className="imgG imgPointer" alt=""

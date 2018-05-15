@@ -65,12 +65,12 @@ class RegisterService extends Component {
                                        name="estimateMinutes"/>
                             </div>
                         </div>
-                        <div align="center" className="row">
+                        <div align="center" className="row card-deck alignSELF">
                             <button disabled={submitting} onClick={handleSubmit(submit)}
-                                    className="btn btn-outline-success button">Novo Serviço
+                                    className="btn btn-outline-success buttonSize">Novo Serviço
                             </button>
                             <button disabled={submitting} onClick={() => this.props.redirect('/')}
-                                    className="btn btn-outline-danger button">Cancelar
+                                    className="btn btn-outline-danger buttonSize">Cancelar
                             </button>
                         </div>
                     </div>

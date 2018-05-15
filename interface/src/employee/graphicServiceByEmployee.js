@@ -14,7 +14,7 @@ class GraphicService extends Component {
 
     componentDidMount() {
         if (this.props.graphic !== undefined) {
-            c3.generate({
+            let chart = c3.generate({
                 bindto: '#chart',
                 data: {
                     columns: [
@@ -22,17 +22,21 @@ class GraphicService extends Component {
                         ['Finalizado com Atraso', this.props.graphic.delayed],
                         ['Finalizado', this.props.graphic.ok]
                     ],
-                    type: 'pie'
+                    type: 'donut'
+                },
+                donut: {
+                    title: 'Funcionário: ' + this.props.graphic.name
                 }
             });
+            chart.resize({height:500, width:500})
         }
     }
 
     render() {
         return (
-            <div className="container card cardMargin" align="center">
-                <div id="chart" className="card-body graphicSize"/>
-                <button onClick={() => this.props.redirect('/')} className="btn btn-outline-dark card-body cardMargin alignSELF">Voltar a tela Principal</button>
+            <div className="container card cardMargin cardSize" align="center">
+                <div id="chart" className="card-body"/>
+                <button onClick={() => this.props.redirect('/')} className="btn btn-outline-dark card-deck alignSELF buttonType">Voltar a tela Principal</button>
             </div>
         )
     }

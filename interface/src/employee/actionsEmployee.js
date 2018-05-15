@@ -35,10 +35,10 @@ export const filterEmployee = (event) => {
     })
 };
 
-export const filterSituationService = (situation, idEmployee) => {
+export const filterSituationService = (situation) => {
     return ({
         type: "FILTER_SITUATION",
-        payload: {situation: situation, id: idEmployee}
+        payload: situation
     })
 };
 

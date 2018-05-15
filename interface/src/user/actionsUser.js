@@ -7,3 +7,8 @@ export const newUser = (values) => ({
     type: "ADD_USER",
     payload: axios.put(URL, {...values})
 });
+
+export const backError = () => ({
+    type: "BACK_ERROR",
+    payload: true
+});

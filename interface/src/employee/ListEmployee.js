@@ -41,32 +41,43 @@ class ListEmployee extends Component {
                         <th>
                             <div align="right" style={{marginRight: 20}}>
                                 <img src={addEmployee} alt="" className="imgADD imgP imgPointer"
-                                                    onClick={() => this.props.redirect('/register')}/>
+                                     onClick={() => this.props.redirect('/register')}/>
                             </div>
                         </th>
                     </tr>
                     </thead>
-                    {this.props.employees.map(
-                        (employee, index) => {
-                            if (!employee.services)
-                                employee.services = [];
-                            return (
-                                <tbody key={index}>
-                                <tr data-toggle="collapse"
-                                    data-target={"#" + employee._id} className="imgPointer">
-                                    <Registered {...employee}/>
-                                    <td><i className="fa fa-caret-down fa-2x" style={{color: 'black'}}/></td>
-                                </tr>
-                                <tr id={employee._id} className="collapse" data-parent="#accordion">
-                                    <td colSpan={4}>
-                                        <FilterSituationService thisEmployee={employee}/>
-                                        <ServicesList thisEmployee={employee}/>
-                                        <ShowItems thisEmployee={employee}/>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            )
-                        })}
+                    {this.props.employees.length < 1 ?
+                        <tbody>
+                        <tr>
+                            <td colSpan={4}>
+                                <div>Não foram encontrados funcionários</div>
+                            </td>
+                        </tr>
+                        </tbody>
+                        :
+                        this.props.employees.map(
+                            (employee, index) => {
+                                if (!employee.services)
+                                    employee.services = [];
+                                return (
+                                    <tbody key={index}>
+                                    <tr data-toggle="collapse"
+                                        data-target={"#" + employee._id} className="imgPointer">
+                                        <Registered {...employee}/>
+                                        <td><i className="fa fa-caret-down fa-2x" style={{color: 'black'}}/></td>
+                                    </tr>
+                                    <tr id={employee._id} className="collapse" data-parent="#accordion">
+                                        <td colSpan={4}>
+                                            <FilterSituationService thisEmployee={employee}/>
+                                            <ServicesList thisEmployee={employee}/>
+                                            <ShowItems thisEmployee={employee}/>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                )
+                            }
+                        )
+                    }
                 </table>
             </div>
         )
