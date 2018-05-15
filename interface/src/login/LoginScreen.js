@@ -64,7 +64,7 @@ class LoginUser extends Component {
                                                         <div className="alert alert-danger">Usuário ou Senha
                                                             Incorretos</div>
                                                         : this.props.forbidden === 404 ?
-                                                            this.props.redirect('/forbidden')
+                                                            this.props.redirect('/notFound')
                                                             :
                                                             null}
                                                     <div className="clearfix"/>

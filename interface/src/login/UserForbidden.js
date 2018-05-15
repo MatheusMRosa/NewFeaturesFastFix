@@ -9,7 +9,6 @@ class UserForbidden extends Component {
     render() {
         return (
             <div className="imgBack">
-                <div className="margin404">
                     <div className="letter">
                         <p className="letterSize"> Ooops!</p>
                         <p className="letterSize2">Servidor não foi encontrado</p>
@@ -24,7 +23,6 @@ class UserForbidden extends Component {
                         </button>
                     </div>
                     <img src={image404} alt="" className="imgSize"/>
-                </div>
             </div>
         )
     }

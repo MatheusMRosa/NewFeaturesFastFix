@@ -28,7 +28,7 @@ class App extends Component {
                 <Route path="/register" component={RegisterEmployee}/>
                 <Route path="/list" component={HomePageList}/>
                 <Route path="/registerService" component={RegisterService}/>
-                <Route path="/forbidden" component={ForbiddenUser}/>
+                <Route path="/notFound" component={ForbiddenUser}/>
                 <Route path="/graphic" component={GraphicService}/>
             </div>
         );
