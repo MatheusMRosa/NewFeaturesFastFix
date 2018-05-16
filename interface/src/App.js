@@ -5,7 +5,7 @@ import RegisterEmployee from './employee/RegisterEmployee';
 import RegisterService from './employee/RegisterService';
 import HomePageList from './employee/HomePageList';
 import GraphicService from './employee/graphicServiceByEmployee';
-import ForbiddenUser from './login/UserForbidden';
+import PageNotFound from './login/PageNotFound';
 import SideMenuBar from './config/SideMenuBar';
 import {verifySession} from './login/actionsLogin';
 import {Route} from 'react-router';
@@ -28,7 +28,7 @@ class App extends Component {
                 <Route path="/register" component={RegisterEmployee}/>
                 <Route path="/list" component={HomePageList}/>
                 <Route path="/registerService" component={RegisterService}/>
-                <Route path="/notFound" component={ForbiddenUser}/>
+                <Route path="/notFound" component={PageNotFound}/>
                 <Route path="/graphic" component={GraphicService}/>
             </div>
         );
