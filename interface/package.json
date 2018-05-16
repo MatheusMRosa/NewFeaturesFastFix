@@ -11,6 +11,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-live-clock": "^2.0.3",
+    "react-redux-loading-bar": "^4.0.5",
     "react-scripts": "1.1.1"
   },
   "scripts": {

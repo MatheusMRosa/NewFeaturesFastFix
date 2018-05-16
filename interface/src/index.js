@@ -12,18 +12,22 @@ import userReducer from './user/userReducer';
 import {routerReducer, routerMiddleware} from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import {Router, withRouter} from 'react-router';
+import { loadingBarReducer, loadingBarMiddleware } from 'react-redux-loading-bar';
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
 
 const NonBlockApp = withRouter(App);
 
-let store = applyMiddleware(promiseMiddleware(), middleware)(createStore)(
+let store = applyMiddleware(promiseMiddleware(),loadingBarMiddleware({
+    promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE'],
+}), middleware)(createStore)(
     combineReducers({
         employees: employeeReducer,
         user: userReducer,
         form: formReducer,
-        router: routerReducer
+        router: routerReducer,
+        loadingBar: loadingBarReducer
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );

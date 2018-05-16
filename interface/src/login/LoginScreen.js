@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import renderField from './RenderField';
 import validate from './Validate';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 import {push} from "react-router-redux";
+import LoadingBar, {showLoading, hideLoading} from 'react-redux-loading-bar';
 import {verifyLogin, verifySession} from "./actionsLogin";
+import {backError} from '../user/actionsUser';
 import '../config/CSS/login.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
@@ -14,10 +16,12 @@ import iconUser from '../config/images/iconUser.png';
 class LoginUser extends Component {
 
     componentDidMount() {
+        this.props.hideLoading('sectionBar');
         this.props.verifySession()
     }
 
     componentDidUpdate() {
+        this.props.hideLoading('sectionBar');
         if (this.props.logged) {
             this.props.redirect('/list')
         }
@@ -26,60 +30,67 @@ class LoginUser extends Component {
     render() {
         const {handleSubmit, verifyLogin, submitting} = this.props;
         const submit = (values) => {
+            this.props.showLoading('sectionBar');
             verifyLogin(values);
+        };
+        const change = () => {
+            this.props.backError()
         };
         return (
             <div className="imgOtherBack">
-            <div className="main" style={{marginTop: "15%"}} align="center">
-                <div className="col-lg-12">
-                    <div className="container">
-                        <div className="col-lg-4"/>
-                        <div className="col-lg-4">
-                            <div className="row grids text-center">
-                                <div className="view view-tenth">
-                                    <div className="inner_content clearfix">
-                                        <div className="product_image">
-                                            <img src={iconUser} className="img-responsive" alt=""
-                                                 style={{marginLeft: "4%"}}/>
-                                        </div>
-                                        <div className="mask">
-                                            <h2 style={{color: "black"}}>Bem-Vindo Usuário</h2>
-                                            <div className="main">
-                                                <form>
-                                                    <Field component={renderField}
-                                                           label="Digite seu usuário"
-                                                           type="text"
-                                                           name="user"
-                                                           className="text"/>
-                                                    <Field component={renderField}
-                                                           label="Digite sua Senha"
-                                                           type="password"
-                                                           name="pass"
-                                                           className="form-control"/>
-                                                    <div className="submit"><input type="submit"
-                                                                                   disabled={submitting}
-                                                                                   onClick={handleSubmit(submit)}
-                                                                                   value="Login"/></div>
-                                                    {this.props.forbidden === 403 ?
-                                                        <div className="alert alert-danger">Usuário ou Senha
-                                                            Incorretos</div>
-                                                        : this.props.forbidden === 404 ?
-                                                            this.props.redirect('/notFound')
-                                                            :
-                                                            null}
-                                                    <div className="clearfix"/>
-                                                </form>
+                <LoadingBar scope="sectionBar"/>
+                <div className="main" style={{marginTop: "15%"}} align="center">
+                    <div className="col-lg-12">
+                        <div className="container">
+                            <div className="col-lg-4"/>
+                            <div className="col-lg-4">
+                                <div className="row grids text-center">
+                                    <div className="view view-tenth">
+                                        <div className="inner_content clearfix">
+                                            <div className="product_image">
+                                                <img src={iconUser} className="img-responsive" alt=""
+                                                     style={{marginLeft: "4%"}}/>
                                             </div>
-                                        </div>
+                                            <div className="mask">
+                                                <h2 style={{color: "black"}}>Bem-Vindo Usuário</h2>
+                                                <div className="main">
+                                                    <form>
+                                                        <Field component={renderField}
+                                                               label="Digite seu usuário"
+                                                               type="text"
+                                                               name="user"
+                                                               className="text"
+                                                               onChange={change}/>
+                                                        <Field component={renderField}
+                                                               label="Digite sua Senha"
+                                                               type="password"
+                                                               name="pass"
+                                                               className="form-control"
+                                                               onChange={change}/>
+                                                        <div className="submit"><input type="submit"
+                                                                                       disabled={submitting}
+                                                                                       onClick={handleSubmit(submit)}
+                                                                                       value="Login"/></div>
+                                                        {this.props.forbidden === 403 ?
+                                                            <div className="alert alert-danger">Usuário ou Senha
+                                                                Incorretos</div>
+                                                            : this.props.forbidden === 404 ?
+                                                                this.props.redirect('/notFound')
+                                                                :
+                                                                null}
+                                                        <div className="clearfix"/>
+                                                    </form>
+                                                </div>
+                                            </div>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div className="col-lg-4"/>
                     </div>
-                    <div className="col-lg-4"/>
                 </div>
-            </div>
             </div>
         )
     }
@@ -93,6 +104,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = ({
     verifyLogin: verifyLogin,
     verifySession: verifySession,
+    showLoading: showLoading,
+    hideLoading: hideLoading,
+    backError: backError,
     redirect: push
 });
 
