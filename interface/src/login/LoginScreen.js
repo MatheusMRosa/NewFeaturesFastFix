@@ -31,6 +31,7 @@ class LoginUser extends Component {
         const {handleSubmit, verifyLogin, submitting} = this.props;
         const submit = (values) => {
             this.props.showLoading('sectionBar');
+            this.props.backError();
             verifyLogin(values);
         };
         const change = () => {
@@ -72,7 +73,7 @@ class LoginUser extends Component {
                                                                                        onClick={handleSubmit(submit)}
                                                                                        value="Login"/></div>
                                                         {this.props.forbidden === 403 ?
-                                                            <div className="alert alert-danger">Usuário ou Senha
+                                                            <div className="alert alert-danger" onAnimationStart={this.props.hideLoading('sectionBar')}>Usuário ou Senha
                                                                 Incorretos</div>
                                                             : this.props.forbidden === 404 ?
                                                                 this.props.redirect('/notFound')
