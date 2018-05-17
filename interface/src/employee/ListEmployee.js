@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {push} from "react-router-redux";
 import {fetchEmployee} from './actionsEmployee';
-import ServicesList from './ServicesList';
+import ServicesList from './ListService';
 import FilterSituationService from './FilterSituationService';
 import ShowItems from './ShowItems';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';

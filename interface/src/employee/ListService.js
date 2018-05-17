@@ -17,7 +17,7 @@ const DescriptionEstimate = ({estimateHours, estimateMinutes}) => {
     if (estimateMinutes < 10) {
         minutesString = '0' + minutesString
     }
-    return (<div className="col-md-4">Estimativa de
+    return (<div className="col-md-4" align="left">Estimativa de
         Tempo: {estimateHours}:{minutesString} hrs</div>);
 };
 
@@ -26,11 +26,11 @@ const DescriptionDone = ({timeDoneHours, timeDoneMinutes}) => {
     if (timeDoneMinutes < 10) {
         minutesString = '0' + minutesString
     }
-    return (<div className="col-md-4">Tempo
+    return (<div className="col-md-4" align="left">Tempo
         gasto: {timeDoneHours}:{minutesString} hrs</div>);
 };
 
-class ServicesList extends Component {
+class ListService extends Component {
     render() {
         const {thisEmployee} = this.props;
         return (
@@ -96,4 +96,4 @@ const mapStateToProps = (state) => ({
     showDelayed: state.employees.showDelayed
 });
 
-export default connect(mapStateToProps)(ServicesList);
+export default connect(mapStateToProps)(ListService);
