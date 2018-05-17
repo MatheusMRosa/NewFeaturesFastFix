@@ -38,7 +38,7 @@ class ListService extends Component {
                 {thisEmployee.services.length < 1 ?
                     <div style={{marginTop: 20}}>Não foram encontrados serviços de {thisEmployee.name}</div>
                     :
-                    thisEmployee.services.map((service, index) => (
+                    thisEmployee.services.sort((a) => a.done).map((service, index) => (
                         <div key={index}>
                             {(!service.done) ?
                                 <div className="row container sizeContainer">
