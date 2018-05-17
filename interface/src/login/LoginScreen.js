@@ -22,8 +22,9 @@ class LoginUser extends Component {
 
     componentDidUpdate() {
         this.props.hideLoading('sectionBar');
+        this.props.verifySession();
         if (this.props.logged) {
-            this.props.redirect('/list')
+            this.props.redirect('/list');
         }
     }
 

@@ -17,7 +17,7 @@ class Filter extends Component {
             <div className="container row">
                 <div className="col-sm">
                     <img src={statistic} className="imgG imgPointer" alt="" onClick={() => {
-                        this.props.graphicServices(thisEmployee._id, thisEmployee.name).then(() => this.props.redirect('/graphic'));
+                        this.props.graphicServices(thisEmployee._id, thisEmployee.name).then(() => this.props.redirect('/graphic')).catch(() => this.props.redirect('/'));
                     }}/>
                     <span className="span spanC">Estatísticas</span>
                 </div>

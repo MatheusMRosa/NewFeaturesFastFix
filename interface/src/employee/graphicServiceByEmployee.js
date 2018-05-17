@@ -29,6 +29,8 @@ class GraphicService extends Component {
                 }
             });
             chart.resize({height:500, width:500})
+        } else {
+            this.props.redirect('/')
         }
     }
 

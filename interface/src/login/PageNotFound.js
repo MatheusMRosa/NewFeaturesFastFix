@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { push } from "react-router-redux";
-import { backError } from '../user/actionsUser';
-// import image404 from '../config/images/404.png';
+import React, {Component} from 'react';
+import {connect} from 'react-redux'
+import {push} from "react-router-redux";
+import {backError} from '../user/actionsUser';
 import '../config/CSS/pageNotFound.css'
 
 class PageNotFound extends Component {
@@ -14,13 +13,12 @@ class PageNotFound extends Component {
                 <p className="letterSize2">Verifique sua conexão com o servidor</p>
                 <div>
                     <button className="btn btn-dark" onClick={() => {
+                        this.props.backError();
                         this.props.redirect('/');
-                        this.props.backError()
                     }}>
                         Clique para voltar a tela inicial
-                        </button>
+                    </button>
                 </div>
-                {/* <img src={image404} alt="" className="imgSize" /> */}
             </div>
         )
     }
