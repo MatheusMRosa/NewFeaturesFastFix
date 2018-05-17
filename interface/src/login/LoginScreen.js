@@ -39,7 +39,7 @@ class LoginUser extends Component {
             this.props.backError()
         };
         return (
-            <div className="imgOtherBack">
+            <div>
                 <LoadingBar scope="sectionBar"/>
                 <div className="main" style={{marginTop: "15%"}} align="center">
                     <div className="col-lg-12">
