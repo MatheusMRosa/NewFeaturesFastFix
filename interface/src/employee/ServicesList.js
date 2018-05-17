@@ -62,7 +62,7 @@ class ServicesList extends Component {
                                                 <div className="dropdown-menu" aria-labelledby={service._id}>
                                                     <div className="dropdown-item">Motivo do Atraso</div>
                                                     <div className="dropdown-divider"/>
-                                                    <div className="dropdown-item">{service.reasonDelay}</div>
+                                                    <p style={{padding: 20}}>{service.reasonDelay}</p>
                                                 </div>
                                             </div>
                                         </div>

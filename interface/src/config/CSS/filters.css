@@ -1,5 +1,6 @@
 .inputEmloyee {
-    margin-top: 50px;
+    position: relative;
+    top: 50px;
     width: 1100px;
 }
 .stylish-input-group .input-group-addon{
@@ -13,7 +14,4 @@
 .stylish-input-group button{
     border:0;
     background:transparent;
-}
-.marginTOP {
-    margin-top: 100px;
 }
