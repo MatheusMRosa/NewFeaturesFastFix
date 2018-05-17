@@ -41,7 +41,7 @@ class LoginUser extends Component {
         return (
             <div>
                 <LoadingBar scope="sectionBar"/>
-                <div className="main" style={{marginTop: "15%"}} align="center">
+                <div className="main" style={{position: 'relative',top: 250}} align="center">
                     <div className="col-lg-12">
                         <div className="container">
                             <div className="col-lg-4"/>
