@@ -28,7 +28,7 @@ class RegisterEmployee extends Component {
             this.props.redirect('/')
         };
         return (
-            <div className="container card" style={{marginTop: 100, width: 500, height: 500}}>
+            <div className="container card" style={{position: 'relative',top: 100, width: 500, height: 500}}>
                 <h3 className="card-title">Novo Funcionário</h3>
                 <img src={newEmployeeIcon} alt="New Employee"/>
                 <div style={{marginTop: 20}}><Field component={renderField}

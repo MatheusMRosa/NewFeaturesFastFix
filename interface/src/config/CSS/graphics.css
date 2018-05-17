@@ -1,5 +1,6 @@
 .cardMargin {
-    margin-top: 50px;
+    position: relative;
+    top: 50px;
 }
 .cardSize {
     width: 800px;
