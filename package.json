@@ -10,13 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/MatheusMRosa/NewFeaturesFastFix.git"
   },
-  "author": "",
+  "author": "Matheus Moises da Rosa",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MatheusMRosa/NewFeaturesFastFix/issues"
   },
-  "homepage": "https://github.com/MatheusMRosa/NewFeaturesFastFix#readme",
-  "dependencies": {
-    "npm": "^5.8.0"
-  }
+  "homepage": "https://github.com/MatheusMRosa/NewFeaturesFastFix#readme"
 }
