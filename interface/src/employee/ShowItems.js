@@ -19,14 +19,14 @@ class ShowItems extends Component {
                         <div className="dropdown-item">Informações dos Serviços</div>
                         <div className="dropdown-divider"/>
                         <div className="dropdown-item">Abertos: {this.props.graphic.opened}</div>
-                        <div className="dropdown-item">Fechados com Atrado: {this.props.graphic.delayed}</div>
+                        <div className="dropdown-item">Fechados com Atraso: {this.props.graphic.delayed}</div>
                         <div className="dropdown-item">Finalizados: {this.props.graphic.ok}</div>
                     </div> :
                     <div className="dropdown-menu" aria-labelledby={this.props.thisEmployee._id}>
                         <div className="dropdown-item">Informações dos Serviços</div>
                         <div className="dropdown-divider"/>
                         <div className="dropdown-item">Abertos: 0</div>
-                        <div className="dropdown-item">Fechados com Atrado: 0</div>
+                        <div className="dropdown-item">Fechados com Atraso: 0</div>
                         <div className="dropdown-item">Finalizados: 0</div>
                     </div>
                 }
