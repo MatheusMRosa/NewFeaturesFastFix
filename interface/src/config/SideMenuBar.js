@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {push} from "react-router-redux";
 import {connect} from "react-redux";
 import {logout} from '../login/actionsLogin';
-import '../../node_modules/glyphicons-only-bootstrap/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
 import '../../node_modules/font-awesome/css/font-awesome.css';

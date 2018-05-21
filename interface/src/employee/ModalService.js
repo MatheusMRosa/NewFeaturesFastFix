@@ -55,8 +55,19 @@ class ModalService extends Component {
             $("#" + thisService._id).modal("hide");
             window.location.reload()
         };
-        const change = () => {
-            this.props.calculateDelay(parseInt(minutes, 0), parseInt(hours, 0), parseInt(thisService.estimateMinutes, 0), parseInt(thisService.estimateHours, 0));
+        const changeMinute = event => {
+            let hour = 0;
+            if (hours){
+                hour = parseInt(hours, 0)
+            }
+            this.props.calculateDelay(parseInt(event.target.value, 0), hour, parseInt(thisService.estimateMinutes, 0), parseInt(thisService.estimateHours, 0));
+        };
+        const changeHour = event => {
+            let min = 0;
+            if (minutes){
+                min = parseInt(minutes, 0)
+            }
+            this.props.calculateDelay(min, parseInt(event.target.value, 0), parseInt(thisService.estimateMinutes, 0), parseInt(thisService.estimateHours, 0));
         };
         return (
             <div className="modal-content">
@@ -75,12 +86,12 @@ class ModalService extends Component {
                         <Field component={renderField}
                                type="number"
                                name="hours"
-                               onChange={change}/>
+                               onChange={changeHour}/>
                         <div style={{padding: 8}}>Horas</div>
                         <Field component={renderField}
                                type="number"
                                name="minutes"
-                               onChange={change}/>
+                               onChange={changeMinute}/>
                         <div style={{padding: 8}}>Minutos</div>
                     </div>
                     {this.props.delay ?
@@ -110,7 +121,7 @@ const mapStateToProps = (state) => {
     return ({
         delay: state.employees.delay,
         hours: selector(state, 'hours'),
-        minutes: selector(state, 'minutes')
+        minutes: selector(state, 'minutes'),
     });
 };
 
