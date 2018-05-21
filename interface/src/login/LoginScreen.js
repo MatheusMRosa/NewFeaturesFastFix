@@ -39,9 +39,9 @@ class LoginUser extends Component {
             this.props.backError()
         };
         return (
-            <div>
+            <div className="container">
                 <LoadingBar scope="sectionBar"/>
-                <div className="main" style={{position: 'relative',top: 250}} align="center">
+                <div className="main" style={{position: 'relative',top: 200}} align="center">
                     <div className="col-lg-12">
                         <div className="container">
                             <div className="col-lg-4"/>

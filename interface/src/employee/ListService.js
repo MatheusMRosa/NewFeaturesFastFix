@@ -34,7 +34,7 @@ class ListService extends Component {
     render() {
         const {thisEmployee} = this.props;
         return (
-            <div style={{width: '100%'}}>
+            <div style={{width: '100%'}} className="container">
                 {thisEmployee.services.length < 1 ?
                     <div style={{marginTop: 20}}>Não foram encontrados serviços de {thisEmployee.name}</div>
                     :

@@ -7,7 +7,7 @@ import '../config/CSS/pageNotFound.css'
 class PageNotFound extends Component {
     render() {
         return (
-            <div className="size">
+            <div className="size container">
                 <p className="letterSize"> Ooops!</p>
                 <p className="letterSize2">Servidor não foi encontrado</p>
                 <p className="letterSize2">Verifique sua conexão com o servidor</p>

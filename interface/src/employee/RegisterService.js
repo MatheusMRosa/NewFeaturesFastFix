@@ -35,7 +35,7 @@ class RegisterService extends Component {
             window.location.reload();
         };
         return (
-            <div align="center">
+            <div align="center" className="container">
                 {this.props.employeeSelected ?
                     <div className="container card cardSize">
                         <h5 className="card-title margin">Novo serviço para o

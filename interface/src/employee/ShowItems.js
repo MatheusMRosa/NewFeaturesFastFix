@@ -7,7 +7,7 @@ import '../../node_modules/font-awesome-animation/dist/font-awesome-animation.mi
 class ShowItems extends Component {
     render() {
         return (
-            <div align="right" className="dropdown col-sm">
+            <div align="right" className="dropdown col-sm container">
                 <a onClick={() => this.props.graphicServices(this.props.thisEmployee._id)} className=""
                    id={"#" + this.props.thisEmployee._id}
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
