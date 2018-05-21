@@ -49,37 +49,41 @@ export default (state = DEFAULT_STATE, action) => {
                 return {...state, delay: false}
             }
         case "FILTER_SITUATION":
-            return {
-                ...state, filteredList: state.list.filter((employee) => {
-                    if (employee._id === action.payload.id) {
-                        employee.services = employee.services.filter((item) => {
-                            switch (action.payload.situation) {
-                                case "ok":
-                                    if (item.done && !item.delayed) {
-                                        return item;
+            if (action.payload.situation === "clean") {
+                return {...state, filteredList: state.list};
+            } else {
+                return {
+                    ...state, filteredList: [...state.list.filter((employee) => {
+                        if (employee._id === action.payload.id) {
+                            return {
+                                ...employee, services: employee.services.filter((item) => {
+                                    switch (action.payload.situation) {
+                                        case "ok":
+                                            if (item.done && !item.delayed) {
+                                                return item;
+                                            }
+                                            return null;
+                                        case "opened":
+                                            if (!item.done) {
+                                                return item
+                                            }
+                                            return null;
+                                        case "delayed":
+                                            if (item.done && item.delayed) {
+                                                return item;
+                                            }
+                                            return null;
+                                        default:
+                                            return item;
                                     }
-                                    return null;
-                                case "opened":
-                                    if (!item.done) {
-                                        return item
-                                    }
-                                    return null;
-                                case "delayed":
-                                    if (item.done && item.delayed) {
-                                        return item;
-                                    }
-                                    return null;
-                                default:
-                                    return item;
+                                })
                             }
-                        });
-                        console.log(employee);
-                        return employee;
-                    } else {
-                        return employee;
-                    }
-                })
-            };
+                        } else {
+                            return employee;
+                        }
+                    })]
+                };
+            }
         case "GRAPHIC_FULFILLED":
             return {...state, graphic: action.payload.data};
         case "ALTER_SERVICE_FULFILLED":
