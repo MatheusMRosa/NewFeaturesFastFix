@@ -8,6 +8,7 @@ import ShowItems from './ShowItems';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
+import '../../node_modules/font-awesome/css/font-awesome.css';
 import '../config/CSS/listEmployee.css';
 import '../config/CSS/serviceList.css';
 import addEmployee from '../config/images/addEmployee.png';
