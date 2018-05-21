@@ -90,10 +90,6 @@ class ListService extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    showServiceOk: state.employees.showServiceOk,
-    showOpened: state.employees.showOpened,
-    showDelayed: state.employees.showDelayed
-});
+const mapStateToProps = (state) => ({});
 
 export default connect(mapStateToProps)(ListService);

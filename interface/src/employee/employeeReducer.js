@@ -11,9 +11,6 @@ const DEFAULT_STATE = {
     employeeSaved: false,
     serviceAdded: false,
     delay: false,
-    showOpened: true,
-    showDelayed: true,
-    showServiceOk: true,
     graphic: undefined
 };
 
@@ -52,34 +49,37 @@ export default (state = DEFAULT_STATE, action) => {
                 return {...state, delay: false}
             }
         case "FILTER_SITUATION":
-            // let employee = state.list.action.payload.id;
-            // return {
-            //     ...state, filteredList: employee.filter((item) => {
-            //         if (action.payload.situation === "opened") {
-            //             return !item.done
-            //         } else if (action.payload.situation === "delayed") {
-            //             if (item.done && item.delayed) {
-            //                 return item
-            //             }
-            //         } else if (action.payload.situation === "serviceOk") {
-            //             if (item.done && !item.delayed) {
-            //                 return item
-            //             }
-            //         } else {
-            //             return item
-            //         }
-            //         return !action.payload
-            //     })
-            // };
-            if (action.payload === "opened") {
-                return {...state, showOpened: true, showDelayed: false, showServiceOk: false}
-            } else if (action.payload === "delayed") {
-                return {...state, showOpened: false, showDelayed: true, showServiceOk: false}
-            } else if (action.payload === "serviceOk") {
-                return {...state, showOpened: false, showDelayed: false, showServiceOk: true}
-            } else {
-                return {...state, showOpened: true, showDelayed: true, showServiceOk: true}
-            }
+            return {
+                ...state, filteredList: state.list.filter((employee) => {
+                    if (employee._id === action.payload.id) {
+                        employee.services = employee.services.filter((item) => {
+                            switch (action.payload.situation) {
+                                case "ok":
+                                    if (item.done && !item.delayed) {
+                                        return item;
+                                    }
+                                    return null;
+                                case "opened":
+                                    if (!item.done) {
+                                        return item
+                                    }
+                                    return null;
+                                case "delayed":
+                                    if (item.done && item.delayed) {
+                                        return item;
+                                    }
+                                    return null;
+                                default:
+                                    return item;
+                            }
+                        });
+                        console.log(employee);
+                        return employee;
+                    } else {
+                        return employee;
+                    }
+                })
+            };
         case "GRAPHIC_FULFILLED":
             return {...state, graphic: action.payload.data};
         case "ALTER_SERVICE_FULFILLED":
