@@ -15,6 +15,8 @@ import addEmployee from '../config/images/addEmployee.png';
 
 const Registered = ({name}) => <td colSpan={3} className="text-left col-lg-12">{name}</td>;
 
+let showChart = false;
+
 class ListEmployee extends Component {
 
     shouldComponentUpdate(nextProps) {
@@ -69,7 +71,8 @@ class ListEmployee extends Component {
                                     </tr>
                                     <tr id={employee._id} className="collapse" data-parent="#accordion">
                                         <td colSpan={4}>
-                                            <FilterSituationService thisEmployee={employee}/>
+                                        {employee.services.length > 0 ? showChart = true: showChart = false}
+                                            <FilterSituationService thisEmployee={employee} showChart={showChart}/>
                                             <ServicesList thisEmployee={employee}/>
                                             <ShowItems thisEmployee={employee}/>
                                         </td>
