@@ -8,10 +8,10 @@ import ShowItems from './ShowItems';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
-import '../../node_modules/font-awesome/css/font-awesome.css';
 import '../config/CSS/listEmployee.css';
 import '../config/CSS/serviceList.css';
 import addEmployee from '../config/images/addEmployee.png';
+import down from '../config/images/caret-down.svg';
 
 const Registered = ({name}) => <td colSpan={3} className="text-left col-lg-12">{name}</td>;
 
@@ -67,7 +67,7 @@ class ListEmployee extends Component {
                                     <tr data-toggle="collapse"
                                         data-target={"#" + employee._id} className="imgPointer">
                                         <Registered {...employee}/>
-                                        <td><i className="fa fa-caret-down fa-2x" style={{color: 'black'}}/></td>
+                                        <td><img src={down} alt="" className="fa fa-2x"/></td>
                                     </tr>
                                     <tr id={employee._id} className="collapse" data-parent="#accordion">
                                         <td colSpan={4}>

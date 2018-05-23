@@ -2,18 +2,16 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {graphicServices} from './actionsEmployee';
 import '../config/CSS/sideBar.css';
-import '../../node_modules/font-awesome-animation/dist/font-awesome-animation.min.css';
+import info from '../config/images/info-circle.svg';
 
 class ShowItems extends Component {
     render() {
         return (
             <div align="right" className="dropdown col-sm container">
-                <a onClick={() => this.props.graphicServices(this.props.thisEmployee._id)} className=""
-                   id={"#" + this.props.thisEmployee._id}
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i className="fa fa-info-circle fa-2x faa-parent animated-hover faa-pulse imgPointer"
-                       style={{color: "black", margin: 13}}/>
-                </a>
+                <img src={info} alt="" className="fa fa-2x faa-parent animated-hover faa-pulse imgPointer"
+                     onClick={() => this.props.graphicServices(this.props.thisEmployee._id)}
+                     id={"#" + this.props.thisEmployee._id}
+                     data-toggle="dropdown" aria-haspopup="true"/>
                 {this.props.graphic ?
                     <div className="dropdown-menu" aria-labelledby={this.props.thisEmployee._id}>
                         <div className="dropdown-item">Informações dos Serviços</div>
