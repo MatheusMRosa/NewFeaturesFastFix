@@ -4,11 +4,9 @@ import {connect} from "react-redux";
 import {logout} from '../login/actionsLogin';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../node_modules/bootstrap/dist/js/bootstrap';
+import '../../node_modules/font-awesome/css/font-awesome.css';
 import 'popper.js';
 import './CSS/sideBar.css';
-import off from './images/power-off.svg';
-import card from './images/address-card.svg';
-import home from './images/home.svg';
 
 
 class SideMenuBar extends Component {
@@ -19,14 +17,13 @@ class SideMenuBar extends Component {
                 <nav className="main-menu">
                     <ul>
                         <li>
-                            <a onClick={() => this.props.redirect('/')}>
-                                <img src={home} alt="" className="fa fa-2x"/>
-                                <span className="nav-text">Página Principal</span></a>
+                            <a onClick={() => this.props.redirect('/')}><i className="fa fa-home fa-2x"/><span
+                                className="nav-text">Página Principal</span></a>
                         </li>
                         <li className="has-subnav">
                             <a onClick={() => this.props.redirect('/register')}>
-                                <img src={card} alt="" className="fa fa-2x"/>
-                                <span className="nav-text">Novo Funcionário</span>
+                                <i className="fa fa-address-card fa-2x"/><span
+                                className="nav-text">Novo Funcionário</span>
                             </a>
                         </li>
                     </ul>
@@ -34,9 +31,9 @@ class SideMenuBar extends Component {
                         <li>
                             <a onClick={() => {
                                 this.props.logout();
+                                window.location.reload();
                             }}>
-                                <img src={off} alt="" className="fa fa-2x"/>
-                                <span className="nav-text">Logout</span>
+                                <i className="fa fa-power-off fa-2x"/><span className="nav-text">Logout</span>
                             </a>
                         </li>
                     </ul>

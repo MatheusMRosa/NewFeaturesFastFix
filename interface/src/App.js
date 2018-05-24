@@ -22,7 +22,7 @@ class App extends Component {
                 {this.props.logged ?
                     <SideMenuBar/>
                     :
-                    null
+                    ""
                 }
                 <Route exact path="/" component={LoginUser}/>
                 <Route path="/register" component={RegisterEmployee}/>
