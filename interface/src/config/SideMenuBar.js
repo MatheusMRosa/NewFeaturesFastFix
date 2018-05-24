@@ -31,7 +31,6 @@ class SideMenuBar extends Component {
                         <li>
                             <a onClick={() => {
                                 this.props.logout();
-                                window.location.reload();
                             }}>
                                 <i className="fa fa-power-off fa-2x"/><span className="nav-text">Logout</span>
                             </a>

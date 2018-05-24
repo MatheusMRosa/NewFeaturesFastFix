@@ -10,7 +10,7 @@ import {Provider} from 'react-redux';
 import employeeReducer from './employee/employeeReducer';
 import userReducer from './user/userReducer';
 import {routerReducer, routerMiddleware} from 'react-router-redux';
-import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history/createHashHistory';
 import {Router, withRouter} from 'react-router';
 import { loadingBarReducer, loadingBarMiddleware } from 'react-redux-loading-bar';
 
