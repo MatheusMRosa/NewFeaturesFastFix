@@ -1,0 +1,61 @@
+Requisitos
+Os requisitos foram levados em conta após uma entrevista Semi-estruturada, realizada
+
+com o dono da empresa. Nessa entrevista foram visto os seguintes requisitos:
+
+1.1
+
+Requisitos de negócio:
+
+Clientes e Serviços da empresa:
+● O sistema deverá permitir o cadastro de Clientes e serviço prestado;
+● O sistema deve permitir o cadastro do valor do serviço e quais o produtos que
+foram comprados para a execução do mesmo;
+● O sistema deve relacionar cliente e serviço com o pagamento, gerando assim
+um histórico de cliente;
+● O sistema deve permitir a consulta de Clientes;
+
+Relatórios:
+● O sistema deverá emitir relatórios dos serviços mais e menos prestados;
+● O sistema deverá emitir relatório dos serviços mais rentáveis e menos
+rentáveis;
+● O sistema deverá emitir quais são os produtos mais comprados no período de
+um serviço;
+
+1.2
+
+Relação de usuários:
+
+● Dono
+● Secretária responsável pelo atendimento
+● Clientes
+
+1.3
+
+Requisitos de usuários (UserStories1):
+
+● Como Dono posso ter acesso a todos os histórico de clientes, suas dívidas, por
+meio de gráficos;
+● Como Dono posso cadastrar o cliente, seu serviço e valores, como dívida, se é
+devedor, ou se está quitado;
+● Como secretária posso cadastrar o cliente, seu serviço e valores, como dívida,
+se é devedor, ou se está quitado;
+● Como secretária posso fazer uma busca no banco de dados de clientes e
+serviços;
+
+1.4
+
+Requisitos do Software:
+
+● O sistema deve ser acessado por meio de senhas;
+● O sistema deve gerar gráficos em formato de pizza, com diferentes cores;
+● O sistema deve oferecer mecanismos de busca por nome, serviço, data de
+entrada e saída do serviço, e também deve oferecer uma pesquisa mais
+avançada;
+● O sistema deve categorizar os serviços para organização;
+● O sistema deve permitir a impressão dos documentos;
+
+
+1 - Tradução “Histórias do usuário”: Termo usado em relação a levantamento de requisitos para
+designar aquilo que o usuário deseja em seu sistema.
+
