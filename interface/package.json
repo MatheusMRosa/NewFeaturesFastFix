@@ -37,7 +37,7 @@
     "preelectron-pack": "yarn build",
     "electron": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder -w"
+    "dist": "electron-builder"
   },
   "devDependencies": {
     "axios": "^0.18.0",
